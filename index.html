@@ -830,6 +830,121 @@
     font-size: 14px;
   }
   .prod-card.hidden { display: none; }
+
+  /* ── PREÇO ANTIGO ── */
+  .prod-old-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: line-through;
+    line-height: 1.2;
+  }
+  .modal-old-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: line-through;
+    display: block;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .modal-price-current {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+  }
+
+  /* ── VÍDEOS ── */
+  .video-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .video-row:hover { border-color: var(--border2); }
+  .video-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    gap: 16px;
+    user-select: none;
+  }
+  .video-header-left { display: flex; align-items: center; gap: 14px; }
+  .video-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid rgba(200,241,53,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .video-title-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .video-toggle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: var(--muted); flex-shrink: 0;
+  }
+  .video-body { display: none; border-top: 1px solid var(--border); }
+  .video-body.open { display: block; }
+  .video-link-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .video-link-icon {
+    width: 36px; height: 36px;
+    border-radius: var(--radius-xs);
+    background: rgba(200,241,53,0.1);
+    border: 1px solid rgba(200,241,53,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .video-link-label {
+    flex: 1;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px; font-weight: 600; color: var(--text);
+  }
+  .video-link-btn {
+    font-size: 11px; font-family: 'Outfit', sans-serif;
+    font-weight: 700; color: #0a0a0a;
+    background: var(--accent); border-radius: var(--radius-xs);
+    padding: 5px 12px; text-decoration: none;
+    transition: opacity 0.2s; white-space: nowrap;
+  }
+  .video-link-btn:hover { opacity: 0.85; }
+  .video-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px; padding: 14px 20px 18px;
+  }
+  @media (max-width: 500px) {
+    .video-products-grid { grid-template-columns: repeat(2,1fr); padding: 10px 12px 14px; }
+  }
+
 </style>
 </head>
 <body>
@@ -911,7 +1026,7 @@
   <!-- VÍDEOS -->
   <div id="tab-videos" class="section">
     <div class="section-title">Links e Produtos das Publicações</div>
-    <div class="prod-grid" id="grid-videos"></div>
+    <div id="videos-list"></div>
   </div>
 
 </div>
@@ -938,86 +1053,1179 @@
 
 <script>
 const products = {
-  pcs: [
-    {"cat": "PCs Montados", "name": "PC Gamer Forge Ryzen 5 3400G", "specs": ["16GB DDR4", "SSD 480GB", "Fonte 400W 80 Plus"], "price": "R$ 2.424,68", "old_price": null, "store": "Shopee-Pichau", "link": "https://s.shopee.com.br/3qJzVJKvX3", "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhlzzqocow06a4@resize_w450_nl.webp"},
-    {"cat": "PCs Montados", "name": "PC Gamer Forge Ryzen 5 5600GT", "specs": ["16GB DDR4", "SSD 240GB", "Fonte 400W 80 Plus"], "price": "R$ 2.657,50", "old_price": null, "store": "Shopee-Pichau", "link": "https://s.shopee.com.br/9pbCePIXKe", "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf3tom6a@resize_w450_nl.webp"},
-    {"cat": "PCs Montados", "name": "PC Gamer Spectrum Ryzen 7 5700X", "specs": ["Water Cooler", "Radeon RX 7600 8GB", "16GB DDR4", "SSD M.2 512GB", "Fonte 600W 80 Plus"], "price": "R$ 5.509,91", "old_price": null, "store": "Shopee-Pichau", "link": "https://s.shopee.com.br/1LceX9SKwc", "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjpoyjn709ojc5@resize_w450_nl.webp"},
-    {"cat": "PCs Montados", "name": "PC Gamer Spectrum Intel i5-10400F", "specs": ["Radeon RX 7600 8GB", "32GB DDR4", "SSD 1TB", "Fonte 500W 80 Plus"], "price": "R$ 5.647,91", "old_price": null, "store": "Shopee-Pichau", "link": "https://s.shopee.com.br/9025fHpCwx", "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mi1l7hdilukjd3@resize_w450_nl.webp"},
-    {"cat": "PCs Montados", "name": "PC Gamer Spectrum Ryzen 5 5500", "specs": ["GeForce RTX 3050 6GB", "16GB DDR4", "SSD 1TB", "Fonte 600W 80 Plus"], "price": "R$ 4.725,51", "old_price": null, "store": "Shopee-Pichau", "link": "https://s.shopee.com.br/AKXTFoDJXb", "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf9fye74@resize_w450_nl.webp"},
-    {"cat": "PCs Montados", "name": "Setup Gamer Completo Ryzen 5 3400g", "specs": ["Ryzen 5 3400g", "16GB DDR4", "SSD 480GB", "Fonte 400W 80 Plus", "Monitor 21\" 75Hz", "Kit Teclado/Mouse/Headset Completo"], "price": "R$ 2.841,91", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/qgNwRx1CN", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdwm-m0m3cnutcsit23@resize_w450_nl.webp"},
+  "pcs": [
+    {
+      "cat": "PCs Montados",
+      "name": "PC Gamer Forge Ryzen 5 3400G",
+      "specs": [
+        "16GB DDR4",
+        "SSD 480GB",
+        "Fonte 400W 80 Plus"
+      ],
+      "price": "R$ 2.424,68",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/3qJzVJKvX3",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhlzzqocow06a4@resize_w450_nl.webp"
+    },
+    {
+      "cat": "PCs Montados",
+      "name": "PC Gamer Forge Ryzen 5 5600GT",
+      "specs": [
+        "16GB DDR4",
+        "SSD 240GB",
+        "Fonte 400W 80 Plus"
+      ],
+      "price": "R$ 2.657,50",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/9pbCePIXKe",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf3tom6a@resize_w450_nl.webp"
+    },
+    {
+      "cat": "PCs Montados",
+      "name": "PC Gamer Spectrum Ryzen 7 5700X",
+      "specs": [
+        "Water Cooler",
+        "Radeon RX 7600 8GB",
+        "16GB DDR4",
+        "SSD M.2 512GB",
+        "Fonte 600W 80 Plus"
+      ],
+      "price": "R$ 5.509,91",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/1LceX9SKwc",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjpoyjn709ojc5@resize_w450_nl.webp"
+    },
+    {
+      "cat": "PCs Montados",
+      "name": "PC Gamer Spectrum Intel i5-10400F",
+      "specs": [
+        "Radeon RX 7600 8GB",
+        "32GB DDR4",
+        "SSD 1TB",
+        "Fonte 500W 80 Plus"
+      ],
+      "price": "R$ 5.647,91",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/9025fHpCwx",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mi1l7hdilukjd3@resize_w450_nl.webp"
+    },
+    {
+      "cat": "PCs Montados",
+      "name": "PC Gamer Spectrum Ryzen 5 5500",
+      "specs": [
+        "GeForce RTX 3050 6GB",
+        "16GB DDR4",
+        "SSD 1TB",
+        "Fonte 600W 80 Plus"
+      ],
+      "price": "R$ 4.725,51",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/AKXTFoDJXb",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf9fye74@resize_w450_nl.webp"
+    },
+    {
+      "cat": "PCs Montados",
+      "name": "Setup Gamer Completo Ryzen 5 3400g",
+      "specs": [
+        "Ryzen 5 3400g",
+        "16GB DDR4",
+        "SSD 480GB",
+        "Fonte 400W 80 Plus",
+        "Monitor 21\" 75Hz",
+        "Kit Teclado/Mouse/Headset Completo"
+      ],
+      "price": "R$ 2.841,91",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/qgNwRx1CN",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdwm-m0m3cnutcsit23@resize_w450_nl.webp"
+    },
+    {
+      "cat": "PCs Montados",
+      "name": "Setup Gamer Forge Ryzen 3 3200g",
+      "specs": [
+        "Ryzen 3 3200g",
+        "16GB DDR4",
+        "SSD 480GB",
+        "Monitor 21\"",
+        "Headset",
+        "Mousepad",
+        "Teclado e Mouse"
+      ],
+      "price": "R$ 2.759,91",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/9Kf4bK5sTq",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjq17ka1p98h18@resize_w450_nl.webp"
+    }
   ],
-  pecas: [
-    {"cat": "Componentes", "name": "Msi A520M-A Pro", "specs": ["Am4", "Matx", "Ddr4", "Hdmi", "Dvi M.2"], "price": "R$ 398,00", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/15LBuga", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_644232-MLA99455670876_112025-F.webp"},
-    {"cat": "Componentes", "name": "AMD Ryzen 5 7600X Box", "specs": ["AM5", "5.3GHz", "6 Cores/12 Threads"], "price": "R$ 979,99", "old_price": null, "store": "Amazon", "link": "https://amzn.to/4eS5rOD", "img": "https://m.media-amazon.com/images/I/51m7L9bQI8L._AC_SX569_.jpg"},
-    {"cat": "Componentes", "name": "Gamdias Aura Gl240 Lite", "specs": ["Argb", "Am5"], "price": "R$ 250,00", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/1X4nL2v", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_603754-MLA99991955697_112025-F.webp"},
-    {"cat": "Componentes", "name": "AMD Ryzen 5 5500", "specs": ["3.6GHz/4.2GHz Max Turbo Cache", "16MB", "AM4"], "price": "R$ 629,85", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/2eFGGwb", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_806163-MLA99416647702_112025-F.webp"},
-    {"cat": "Componentes", "name": "Kit 3 Fans Rgb", "specs": ["120mm Gabinete Gamer C Controladora"], "price": "R$ 86,50", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/2K7sBaZ", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_973311-MLA99520370992_112025-F.webp"},
-    {"cat": "Componentes", "name": "Gabinete Acegeek Aquarium M345", "specs": ["Mid-tower", "Lat De Vidro"], "price": "R$ 259,98", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/1dGiuWM", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_738250-MLB107019844209_022026-F.webp"},
-    {"cat": "Componentes", "name": "Gabinete Kalkan Asgard", "specs": ["Preto", "Aquário"], "price": "R$ 334,11", "old_price": null, "store": "Amazon", "link": "https://amzn.to/43eqUKu", "img": "https://m.media-amazon.com/images/I/61Or73-TUHL._AC_SX569_.jpg"},
-    {"cat": "Componentes", "name": "Water Cooler Pichau Aqua 360X", "specs": ["ARGB", "360mm", "Preto"], "price": "R$ 284,91", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/8fPFI3Pv10", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdww-mckogua57w3gcd.webp"},
-    {"cat": "Componentes", "name": "Water Cooler Rise Mode Aura", "specs": ["Ice Black", "Argb", "Exp", "360mm"], "price": "R$ 509,90", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/2xaHiK5", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_825588-MLB89138918089_082025-F.webp"},
-    {"cat": "Componentes", "name": "Gabinete Aquário Mancer CV100", "specs": ["Mid-Tower", "Lateral De Vidro", "Branco"], "price": "R$ 141,46", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/7fWYyvOaJp", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ren7-m1r1f2ee4q8930.webp"},
-    {"cat": "Componentes", "name": "Kit Upgrade Ryzen 5 5500", "specs": ["Ryzen 5 5500", "B450M", "16GB DDR4"], "price": "R$ 1.705,71", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/7ppzBMyJea", "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7qtssqbvvpe0d.webp"},
-    {"cat": "Componentes", "name": "Ryzen 5 5500", "specs": ["3.6GHz", "Cache 16MB", "6 Cores/12 Threads", "AM4"], "price": "R$ 623,88", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/6VKmRR7T2L", "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7gz1moves0c3d@resize_w450_nl.webp"},
-    {"cat": "Componentes", "name": "Mancer CV500L", "specs": ["Mid Tower", "Lateral De Vidro", "Preto"], "price": "R$ 180,00", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/AKXV0cTJED", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rfgp-m3p2qa48d38d49@resize_w450_nl.webp"},
-    {"cat": "Componentes", "name": "Fonte Cooler Master 650W", "specs": ["ATX 3.1", "80 Plus Gold", "650w", "PFC Ativo"], "price": "R$ 331,05", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/8KmQz5sCIi", "img": "https://down-br.img.susercontent.com/file/sg-11134201-82622-mldmriu1fu9xf6@resize_w450_nl.webp"},
+  "pecas": [
+    {
+      "cat": "Componentes",
+      "name": "Msi A520M-A Pro",
+      "specs": [
+        "Am4",
+        "Matx",
+        "Ddr4",
+        "Hdmi",
+        "Dvi M.2"
+      ],
+      "price": "R$ 398,00",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/15LBuga",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_644232-MLA99455670876_112025-F.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "AMD Ryzen 5 7600X Box",
+      "specs": [
+        "AM5",
+        "5.3GHz",
+        "6 Cores/12 Threads"
+      ],
+      "price": "R$ 979,99",
+      "store": "Amazon",
+      "link": "https://amzn.to/4eS5rOD",
+      "img": "https://m.media-amazon.com/images/I/51m7L9bQI8L._AC_SX569_.jpg"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Gamdias Aura Gl240 Lite",
+      "specs": [
+        "Argb",
+        "Am5"
+      ],
+      "price": "R$ 250,00",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/1X4nL2v",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_603754-MLA99991955697_112025-F.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "AMD Ryzen 5 5500",
+      "specs": [
+        "3.6GHz/4.2GHz Max Turbo Cache",
+        "16MB",
+        "AM4"
+      ],
+      "price": "R$ 629,85",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2eFGGwb",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_806163-MLA99416647702_112025-F.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Kit 3 Fans Rgb",
+      "specs": [
+        "120mm",
+        "c/ Controladora"
+      ],
+      "price": "R$ 86,50",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2K7sBaZ",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_973311-MLA99520370992_112025-F.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Gabinete Acegeek Aquarium M345",
+      "specs": [
+        "Mid-tower",
+        "Lat De Vidro"
+      ],
+      "price": "R$ 259,98",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/1dGiuWM",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_738250-MLB107019844209_022026-F.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Gabinete Kalkan Asgard",
+      "specs": [
+        "Preto",
+        "Aquário"
+      ],
+      "price": "R$ 334,11",
+      "store": "Amazon",
+      "link": "https://amzn.to/43eqUKu",
+      "img": "https://m.media-amazon.com/images/I/61Or73-TUHL._AC_SX569_.jpg"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Water Cooler Pichau Aqua 360X",
+      "specs": [
+        "ARGB",
+        "360mm",
+        "Preto"
+      ],
+      "price": "R$ 284,91",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/8fPFI3Pv10",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdww-mckogua57w3gcd.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Water Cooler Rise Mode Aura",
+      "specs": [
+        "Ice Black",
+        "Argb",
+        "Exp",
+        "360mm"
+      ],
+      "price": "R$ 509,90",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2xaHiK5",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_825588-MLB89138918089_082025-F.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Gabinete Aquário Mancer CV100",
+      "specs": [
+        "Mid-Tower",
+        "Lateral De Vidro",
+        "Branco"
+      ],
+      "price": "R$ 141,46",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/7fWYyvOaJp",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ren7-m1r1f2ee4q8930.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Kit Upgrade Ryzen 5 5500",
+      "specs": [
+        "Ryzen 5 5500",
+        "B450M",
+        "16GB DDR4"
+      ],
+      "price": "R$ 1.705,71",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/7ppzBMyJea",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7qtssqbvvpe0d.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Ryzen 5 5500",
+      "specs": [
+        "3.6GHz",
+        "Cache 16MB",
+        "6 Cores/12 Threads",
+        "AM4"
+      ],
+      "price": "R$ 623,88",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/6VKmRR7T2L",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7gz1moves0c3d@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Mancer CV500L",
+      "specs": [
+        "Mid Tower",
+        "Lateral De Vidro",
+        "Preto"
+      ],
+      "price": "R$ 180,00",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/AKXV0cTJED",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rfgp-m3p2qa48d38d49@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Mancer CV500L",
+      "specs": [
+        "Mid Tower",
+        "Lateral De Vidro",
+        "Branco"
+      ],
+      "price": "R$ 190,25",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/9fHoDS6zkW",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rffv-m3p2s6mc49473a@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "Fonte Cooler Master 650W",
+      "specs": [
+        "ATX 3.1",
+        "80 Plus Gold",
+        "650w",
+        "PFC Ativo"
+      ],
+      "price": "R$ 331,05",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/8KmQz5sCIi",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-82622-mldmriu1fu9xf6@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "RX 580 2048SP 8gb Biostar",
+      "specs": [
+        "8gb VRAM",
+        "GDDR5",
+        "256Bits"
+      ],
+      "price": "R$ 766,80",
+      "store": "Shopee-Terabyte",
+      "link": "https://s.shopee.com.br/3g0hpXnY6U",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-821en-mgi9xqxveqdldd@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "GeForce GTX750 4gb",
+      "specs": [
+        "Gddr5",
+        "4GB",
+        "128Bits"
+      ],
+      "price": "R$ 504,78",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/1VwDFp6vvf",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7reqh-m8c2m5iuytog77@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "RX6600 Challenger ASRock 8gb",
+      "specs": [
+        "8GB",
+        "GDDR6",
+        "128Bits"
+      ],
+      "price": "R$ 1.563,08",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/3g0hq9CTYE",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdvm-mdq9fbbio7ix89@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Componentes",
+      "name": "RTX 5050 GeForce 8gb",
+      "specs": [
+        "GDDR6",
+        "8GB"
+      ],
+      "price": "R$ 2.189,00",
+      "store": "Amazon",
+      "link": "https://amzn.to/4tNhAbe",
+      "img": "https://m.media-amazon.com/images/I/51i0dE5JkRL._AC_SX569_.jpg"
+    }
   ],
-  perifericos: [
-    {"cat": "Periféricos", "name": "Microfone Condensador RGB Strea", "specs": [], "price": "R$ 99,34", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/2iBmaMW", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_618425-MLA106695031651_022026-F.webp"},
-    {"cat": "Periféricos", "name": "Qkz Ak6", "specs": ["Profissional", "c/ Microfone"], "price": "R$ 27,90", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/2S9nrFE", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_648999-MLA99599197554_122025-F.webp"},
-    {"cat": "Periféricos", "name": "Braço Articulado Zinnia Nimbo110", "specs": ["13-32\"", "-9Kg"], "price": "R$ 159,00", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/1xjCRxo", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_857350-MLA107653770031_022026-F.webp"},
-    {"cat": "Periféricos", "name": "Cadeira Ergonômica Ajustável", "specs": ["Preto/Branco", "Apoio lombar/Braços", "Giratória"], "price": "R$ 322,41", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/1BJG65perb", "img": "https://down-br.img.susercontent.com/file/br-11134207-820m6-mnf5ojvbpcsg7d@resize_w450_nl.webp"},
-    {"cat": "Periféricos", "name": "Monitor Gamer Samsung Essential", "specs": ["24\"", "Full HD", "120hz"], "price": "R$ 549,00", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/13WM51Z", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_652104-MLA96195278152_102025-F.webp"},
-    {"cat": "Periféricos", "name": "Monitor PC Gamer LG", "specs": ["27” IPS", "Full HD", "100Hz", "HDMI"], "price": "R$ 689,00", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/1fVphjh", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_762062-MLA99992079481_112025-F.webp"},
-    {"cat": "Periféricos", "name": "Attack Shark X87", "specs": ["Mecânico", "Sem Fio", "Tri-mode", "Bluetooth", "Switch Blueberry"], "price": "R$ 284,99", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/1KPtHh5", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_702157-MLB89823510629_082025-F.webp"},
-    {"cat": "Periféricos", "name": "Mouse Pad Extra Grande", "specs": ["90x40", "Branco/Preto"], "price": "R$ 39,90", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/3B4IlRedYR", "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mh6l4mwv54at84.webp"},
-    {"cat": "Periféricos", "name": "Logitech G305", "specs": ["Sem Fio", "LIGHTSPEED", "6 Botões Programáveis", "Até 12.000 DPI", "Wi-Fi"], "price": "R$ 169,90", "old_price": null, "store": "Amazon", "link": "https://amzn.to/494LsZt", "img": "https://m.media-amazon.com/images/I/51sg9BLSMTL._AC_SX425_.jpg"},
-    {"cat": "Periféricos", "name": "Attack Shark X11", "specs": ["59g", "Sem Fio", "c/ Dock RGB", "Até 22000 DPI", "Tri-Mode"], "price": "R$ 239,90", "old_price": null, "store": "Amazon", "link": "https://amzn.to/43cq7cZ", "img": "https://m.media-amazon.com/images/I/71jXjCYR4CL._AC_SX569_.jpg"},
-    {"cat": "Periféricos", "name": "Mancer Ghoul MK3", "specs": ["RGB", "ABNT2", "Switch Huano Vermelho", "Mecânico"], "price": "R$ 134,18", "old_price": null, "store": "Shopee-Pichau", "link": "https://s.shopee.com.br/4LGGA3XLiS", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7renr-m8dmyyovx193fe@resize_w450_nl.webp"},
-    {"cat": "Periféricos", "name": "New Hero Warlock", "specs": ["Switch Blue", "Usb", "Abnt", "Mecânico"], "price": "R$ 119,00", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/2tYQcBf", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_832991-MLB92975138962_092025-F.webp"},
-    {"cat": "Periféricos", "name": "Havit H2002d", "specs": ["Conector P2", "20Hz-20kHz", "Cabo 1", "7m", "Branco Com Vermelho"], "price": "R$ 214,00", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/1jaZJH8", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_828223-MLA99855607665_112025-F.webp"},
-    {"cat": "Periféricos", "name": "Corsair HS35 v2", "specs": ["Com fio", "Universal 3", "5 mm", "Carbono"], "price": "R$ 219,90", "old_price": null, "store": "Amazon", "link": "https://amzn.to/4wGplCP", "img": "https://m.media-amazon.com/images/I/71OJkNkEs0L._AC_SX569_.jpg"},
-    {"cat": "Periféricos", "name": "Monitor Gamer 27\"", "specs": ["IPS", "Full HD", "240Hz", "1ms", "Freesync", "G-Sync", "HDMI/DP", "27\""], "price": "R$ 999,90", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/1ymc5A8", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_962448-MLA99509432382_112025-F.webp"},
-    {"cat": "Periféricos", "name": "Pichau Glower Hall", "specs": ["Com Fio", "Botões Traseiros Configuráveis", "Turbo/Clear", "Gatilho Sensível", "Hall Efect"], "price": "R$ 71,51", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/AAE37fwhZy", "img": "https://down-br.img.susercontent.com/file/sg-11134201-82611-mk452emzg83oba.webp"},
-    {"cat": "Periféricos", "name": "Cadeira Gamer TGT Heron M", "specs": ["Ajustável"], "price": "R$ 801,75", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/6pxRzHmnnp", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdw3-mdkujxxbzavoba.webp"},
-    {"cat": "Periféricos", "name": "TGT M92 V2", "specs": ["Extendido", "900x300x3mm", "Preto"], "price": "R$ 35,78", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/4fsxPMKElz", "img": "https://down-br.img.susercontent.com/file/sg-11134201-8260e-mjzixc492jgk6a.webp"},
-    {"cat": "Periféricos", "name": "Cadeira Ergonomica Zinnia Montreal SL", "specs": ["Cinza", "Tecido Respirável", "Ajustável"], "price": "R$ 763,69", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/4fsxPUKmpD", "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-midfdnghd6o3bd.webp"},
-    {"cat": "Periféricos", "name": "Monitor Philips 24\"", "specs": ["180Hz", "24\"", "0", "5ms", "IPS"], "price": "R$ 639,35", "old_price": "R$ 1.089,99", "store": "Mercado Livre", "link": "https://meli.la/2MKos3d", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_667742-MLA91967052843_092025-F.webp"},
-    {"cat": "Periféricos", "name": "LG UltraGear 27\"", "specs": ["IPS", "1ms", "27\"", "Full Hd", "180Hz"], "price": "R$ 999,99", "old_price": null, "store": "Amazon", "link": "https://amzn.to/49BZOAC", "img": "https://m.media-amazon.com/images/I/61GElLiaorL._AC_SX425_.jpg"},
-    {"cat": "Periféricos", "name": "Mancer Valak Z180", "specs": ["23.8\"", "IPS", "Full HD", "1ms", "180Hz"], "price": "R$ 511,64", "old_price": null, "store": "Shopee-Pichau", "link": "https://s.shopee.com.br/8pihYFqOag", "img": "https://down-br.img.susercontent.com/file/sg-11134201-8260a-mm6gu44z7z0g28@resize_w450_nl.webp"},
-    {"cat": "Periféricos", "name": "TGT Altay TS6", "specs": ["23.8\"", "IPS", "FHD", "1ms", "165Hz"], "price": "R$ 486,51", "old_price": null, "store": "Shopee-Pichau", "link": "https://s.shopee.com.br/5L8pNvift6", "img": "https://down-br.img.susercontent.com/file/sg-11134201-820lr-mnkaxth7ug3qde@resize_w450_nl.webp"},
-    {"cat": "Periféricos", "name": "LG UltraGear 24\"", "specs": ["Full HD", "24\"", "IPS", "180Hz", "1ms"], "price": "R$ 660,68", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/70H3NEsoqU", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ravp-mayhqkhk3yj4f7@resize_w450_nl.webp"},
-    {"cat": "Periféricos", "name": "LG 27MS500-B 27\"", "specs": ["100Hz", "5ms", "Full HD", "IPS"], "price": "R$ 587,08", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/7AaTZh0a0M", "img": "https://down-br.img.susercontent.com/file/sg-11134201-820mb-mnu4cu7rx8g05c@resize_w450_nl.webp"},
-    {"cat": "Periféricos", "name": "LG 32GN600 32\"", "specs": ["165Hz", "Quad HD", "1ms", "VA"], "price": "R$ 1.191,31", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/Lk9RJnmmO", "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m6o6d0atl8p3c7.webp"},
-    {"cat": "Periféricos", "name": "Cadeira Ergonômica NR17", "specs": ["100% Ajustável"], "price": "R$ 683,68", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/5VSFaxYf7H", "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mf1nbmaty22v6a.webp"},
-    {"cat": "Periféricos", "name": "Samsung Viewfinity S5 34\"", "specs": ["5K QHD 1440p", "100Hz", "LCD", "5ms"], "price": "R$ 1.489,00", "old_price": null, "store": "Amazon", "link": "https://amzn.to/430bsln", "img": "https://m.media-amazon.com/images/I/518eipDuOtL._AC_SX425_.jpg"},
-    {"cat": "Acessórios", "name": "Teclado Gamer Semi-Mecânico RGB 65%", "specs": [], "price": "R$ 72,88", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/9zuYUsL8h6", "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mj8fq5fce41y2d@resize_w450_nl.webp"},
+  "perifericos": [
+    {
+      "cat": "Periféricos",
+      "name": "Microfone Condensador RGB Strea",
+      "specs": [],
+      "price": "R$ 99,34",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2iBmaMW",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_618425-MLA106695031651_022026-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Qkz Ak6",
+      "specs": [
+        "Profissional",
+        "c/ Microfone"
+      ],
+      "price": "R$ 27,90",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2S9nrFE",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_648999-MLA99599197554_122025-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Braço Articulado Zinnia Nimbo110",
+      "specs": [
+        "13-32\"",
+        "-9Kg"
+      ],
+      "price": "R$ 159,00",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/1xjCRxo",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_857350-MLA107653770031_022026-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Cadeira Ergonômica Ajustável",
+      "specs": [],
+      "price": "R$ 516,55",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2KJaP4J",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_886378-MLA109935241918_042026-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Monitor Gamer Samsung Essential",
+      "specs": [
+        "24\"",
+        "Full HD",
+        "120hz"
+      ],
+      "price": "R$ 549,00",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/13WM51Z",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_652104-MLA96195278152_102025-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Monitor PC Gamer LG",
+      "specs": [
+        "27”",
+        "IPS",
+        "Full HD",
+        "100Hz",
+        "HDMI"
+      ],
+      "price": "R$ 689,00",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/1fVphjh",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_762062-MLA99992079481_112025-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Attack Shark X87",
+      "specs": [
+        "Mecânico",
+        "Sem Fio",
+        "Tri-mode",
+        "Bluetooth",
+        "Switch Blueberry"
+      ],
+      "price": "R$ 284,99",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/1KPtHh5",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_702157-MLB89823510629_082025-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Mouse Pad Extra Grande",
+      "specs": [
+        "90x40",
+        "Branco/Preto"
+      ],
+      "price": "R$ 39,90",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/3B4IlRedYR",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mh6l4mwv54at84.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Logitech G305",
+      "specs": [
+        "Sem Fio",
+        "LIGHTSPEED",
+        "6 Botões Programáveis",
+        "Até 12.000 DPI",
+        "Wi-Fi"
+      ],
+      "price": "R$ 169,90",
+      "store": "Amazon",
+      "link": "https://amzn.to/494LsZt",
+      "img": "https://m.media-amazon.com/images/I/51sg9BLSMTL._AC_SX425_.jpg"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Attack Shark X11",
+      "specs": [
+        "59g",
+        "Sem Fio",
+        "c/ Dock RGB",
+        "Até 22000 DPI",
+        "Tri-Mode"
+      ],
+      "price": "R$ 239,90",
+      "store": "Amazon",
+      "link": "https://amzn.to/43cq7cZ",
+      "img": "https://m.media-amazon.com/images/I/71jXjCYR4CL._AC_SX569_.jpg"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Mancer Ghoul MK3",
+      "specs": [
+        "RGB",
+        "ABNT2",
+        "Switch Huano Vermelho",
+        "Mecânico"
+      ],
+      "price": "R$ 134,18",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/4LGGA3XLiS",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7renr-m8dmyyovx193fe@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "New Hero Warlock",
+      "specs": [
+        "Switch Blue",
+        "Usb",
+        "Abnt",
+        "Mecânico"
+      ],
+      "price": "R$ 119,00",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2tYQcBf",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_832991-MLB92975138962_092025-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Havit H2002d",
+      "specs": [
+        "Conector P2",
+        "20Hz-20kHz",
+        "Cabo 1.7m",
+        "Branco Com Vermelho"
+      ],
+      "price": "R$ 214,00",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/1jaZJH8",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_828223-MLA99855607665_112025-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Corsair HS35 v2",
+      "specs": [
+        "Com fio",
+        "Universal 3.5 mm",
+        "Carbono"
+      ],
+      "price": "R$ 219,90",
+      "store": "Amazon",
+      "link": "https://amzn.to/4wGplCP",
+      "img": "https://m.media-amazon.com/images/I/71OJkNkEs0L._AC_SX569_.jpg"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Monitor Gamer 27\"",
+      "specs": [
+        "IPS",
+        "Full HD",
+        "240Hz",
+        "1ms",
+        "Freesync",
+        "G-Sync",
+        "HDMI/DP",
+        "27\""
+      ],
+      "price": "R$ 999,90",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/1ymc5A8",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_962448-MLA99509432382_112025-F.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Pichau Glower Hall",
+      "specs": [
+        "Com Fio",
+        "Botões Traseiros Configuráveis",
+        "Turbo/Clear",
+        "Gatilho Sensível",
+        "Hall Efect"
+      ],
+      "price": "R$ 71,51",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/AAE37fwhZy",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-82611-mk452emzg83oba.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Cadeira Gamer TGT Heron M",
+      "specs": [
+        "Ajustável"
+      ],
+      "price": "R$ 801,75",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/6pxRzHmnnp",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdw3-mdkujxxbzavoba.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "TGT M92 V2",
+      "specs": [
+        "Extendido",
+        "900x300x3mm",
+        "Preto"
+      ],
+      "price": "R$ 35,78",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/4fsxPMKElz",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-8260e-mjzixc492jgk6a.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Cadeira Ergonomica Zinnia Montreal SL",
+      "specs": [
+        "Cinza",
+        "Tecido Respirável",
+        "Ajustável"
+      ],
+      "price": "R$ 763,69",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/4fsxPUKmpD",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-midfdnghd6o3bd.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Monitor Philips 24\"",
+      "specs": [
+        "180Hz",
+        "24\"",
+        "0.5ms",
+        "IPS"
+      ],
+      "price": "R$ 639,35",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2MKos3d",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_667742-MLA91967052843_092025-F.webp",
+      "old_price": "R$ 1.089,99"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Cadeira Ergonômica Ajustável",
+      "specs": [
+        "Preto/Branco",
+        "Apoio lombar/Braços",
+        "Giratória"
+      ],
+      "price": "R$ 322,41",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/1BJG65perb",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820m6-mnf5ojvbpcsg7d@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "LG UltraGear 27\"",
+      "specs": [
+        "IPS",
+        "1ms",
+        "27\"",
+        "Full Hd",
+        "180Hz"
+      ],
+      "price": "R$ 999,99",
+      "store": "Amazon",
+      "link": "https://amzn.to/49BZOAC",
+      "img": "https://m.media-amazon.com/images/I/61GElLiaorL._AC_SX425_.jpg"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Mancer Valak Z180",
+      "specs": [
+        "23.8\"",
+        "IPS",
+        "Full HD",
+        "1ms",
+        "180Hz"
+      ],
+      "price": "R$ 511,64",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/8pihYFqOag",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-8260a-mm6gu44z7z0g28@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "TGT Altay TS6",
+      "specs": [
+        "23.8\"",
+        "IPS",
+        "FHD",
+        "1ms",
+        "165Hz"
+      ],
+      "price": "R$ 486,51",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/5L8pNvift6",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-820lr-mnkaxth7ug3qde@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "LG UltraGear 24\"",
+      "specs": [
+        "Full HD",
+        "24\"",
+        "IPS",
+        "180Hz",
+        "1ms"
+      ],
+      "price": "R$ 660,68",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/70H3NEsoqU",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ravp-mayhqkhk3yj4f7@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "LG 27MS500-B 27\"",
+      "specs": [
+        "100Hz",
+        "5ms",
+        "Full HD",
+        "IPS"
+      ],
+      "price": "R$ 587,08",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/7AaTZh0a0M",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-820mb-mnu4cu7rx8g05c@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "LG 32GN600 32\"",
+      "specs": [
+        "165Hz",
+        "Quad HD",
+        "1ms",
+        "VA"
+      ],
+      "price": "R$ 1.191,31",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/Lk9RJnmmO",
+      "img": "https://down-br.img.susercontent.com/file/br-11134258-820lw-mlc5ivsid3bb6c"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Cadeira Ergonômica NR17",
+      "specs": [
+        "100% Ajustável"
+      ],
+      "price": "R$ 683,68",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/5VSFaxYf7H",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mf1nbmaty22v6a.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Samsung Viewfinity S5 34\"",
+      "specs": [
+        "5K QHD 1440p",
+        "100Hz",
+        "LCD",
+        "5ms"
+      ],
+      "price": "R$ 1.489,00",
+      "store": "Amazon",
+      "link": "https://amzn.to/430bsln",
+      "img": "https://m.media-amazon.com/images/I/518eipDuOtL._AC_SX425_.jpg"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "LG UltraGear 24”",
+      "specs": [
+        "IPS",
+        "Full HD",
+        "180Hz",
+        "1ms"
+      ],
+      "price": "R$ 714,00",
+      "store": "Amazon",
+      "link": "https://amzn.to/3PmEDf9",
+      "img": "https://m.media-amazon.com/images/I/61aIuJu0M0L._AC_SX425_.jpg",
+      "old_price": "R$ 1.199,00"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Mancer Amethyst Magnético 🔥",
+      "specs": [
+        "Magnético",
+        "RGB",
+        "Keycaps Translparentes",
+        "Switch Haimu"
+      ],
+      "price": "R$ 165,97",
+      "store": "Shopee-Pichau",
+      "link": "https://s.shopee.com.br/8fPNonVGJf",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820lu-ml7whkmphu6fdf@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Teclado Mecânico Personalizado Courtesy (65%, Acessórios, Keycaps Personalizadas, Switch Red Linear",
+      "specs": [],
+      "price": "R$ 216,51",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/1BJMtFEV8v",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mkb0uvxdy2v564@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Kit Teclado/Mouse RGB",
+      "specs": [
+        "75%",
+        "Knob de Volume",
+        "RGB"
+      ],
+      "price": "R$ 105,45",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/4qCfGD3LJV",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-821di-mh7a1gvpbimk36@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "QKZ AK6",
+      "specs": [
+        "Profissional",
+        "c/ Microfone"
+      ],
+      "price": "R$ 22,66",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/BQphlQfzW",
+      "img": "https://down-br.img.susercontent.com/file/br-11134211-7r98o-m16gydn4rbyme1@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "KZ EDX Pro",
+      "specs": [
+        "Profissional",
+        "c/ Microfone",
+        "Driver Dinâmico Magnético"
+      ],
+      "price": "R$ 42,90",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/5q5CSRXDgo",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820m0-mnoev57vb75s09@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "AOC Agon G4S 25\"",
+      "specs": [
+        "310Hz",
+        "0.3ms",
+        "IPS",
+        "25\"",
+        "Base Ajustável"
+      ],
+      "price": "R$ 1.299,98",
+      "store": "Amazon",
+      "link": "https://amzn.to/4dqGVTM",
+      "img": "https://m.media-amazon.com/images/I/71mc98kWRjL._AC_SX425_.jpg"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Teclado Semi-Mecânico RBG 80% (Com Fio (1.9m), 80%, )",
+      "specs": [],
+      "price": "R$ 49,88",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/9fHv2y4hPf",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxpnvmsutmtbc7@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Periféricos",
+      "name": "Kit Mouse/Teclado/MousePad/Caixa de Som",
+      "specs": [
+        "Mouse 5 Botões RGB Ergonômico",
+        "Teclado RGB 100%",
+        "MousePad 80x30 RGB",
+        "Caixa de Som RGB 40Hz-18KHz 85dB"
+      ],
+      "price": "R$ 159,92",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/1qZ3itTbTh",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhhmvq6k4irm23@resize_w450_nl.webp"
+    }
   ],
-  acessorios: [
-    {"cat": "Acessórios", "name": "Relógio Digital 3d Led", "specs": [], "price": "R$ 31,99", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/14SmRNU", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_918222-MLB79491540848_102024-F.webp"},
-    {"cat": "Acessórios", "name": "Mangueira Led RGB", "specs": ["5M", "IP65"], "price": "R$ 16,98", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/Lk7imp0m1", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp"},
-    {"cat": "Acessórios", "name": "Kit 8 em 1 Limpeza Portátil", "specs": [], "price": "R$ 14,99", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/3g0Zh3ddUF", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rffu-m3bogjn72exz86.webp"},
-    {"cat": "Acessórios", "name": "Painel Organizador Mdf", "specs": ["c/ Kit Ganchos e Prateleira"], "price": "R$ 39,90", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/5L8ngGlFr8", "img": "https://down-br.img.susercontent.com/file/br-11134207-820l9-mnn9qqtsgft092.webp"},
-    {"cat": "Acessórios", "name": "Caixa de Som RGB para PC", "specs": [], "price": "R$ 61,98", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/4qCSKpawZO", "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-tmyxphe7emiv5b@resize_w450_nl.webp"},
-    {"cat": "Acessórios", "name": "Barra de Led RGB Rítmica c/ Sensor de Som", "specs": [], "price": "R$ 27,39", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/10zjlwvXBZ", "img": "https://down-br.img.susercontent.com/file/sg-11134201-7qvez-lhrp9zfph6r12e@resize_w450_nl.webp"},
-    {"cat": "Acessórios", "name": "Caixa de Som Led para PC", "specs": [], "price": "R$ 28,86", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/7fWdiLFJx1", "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-9eva2ef63yivab@resize_w450_nl.webp"},
-    {"cat": "Acessórios", "name": "Fita LED de Sincronia para PC", "specs": [], "price": "R$ 69,99", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/5L8iw9uuNp", "img": "https://down-br.img.susercontent.com/file/sg-11134201-8257w-mg7pa4jpabyj54@resize_w450_nl.webp"},
-    {"cat": "Acessórios", "name": "Fita Dupla Face Extra Forte", "specs": ["1m/3m/5m/10m"], "price": "R$ 10,00", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/9pb8IhSVhN", "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyy34vwbez394d.webp"},
+  "acessorios": [
+    {
+      "cat": "Acessórios",
+      "name": "Relógio Digital 3d Led",
+      "specs": [],
+      "price": "R$ 31,99",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/14SmRNU",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_918222-MLB79491540848_102024-F.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Mangueira Led RGB",
+      "specs": [
+        "5M",
+        "IP65"
+      ],
+      "price": "R$ 16,98",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/Lk7imp0m1",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Kit 8 em 1 Limpeza Portátil",
+      "specs": [],
+      "price": "R$ 14,99",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/3g0Zh3ddUF",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rffu-m3bogjn72exz86.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Painel Organizador Mdf",
+      "specs": [
+        "c/ Kit Ganchos e Prateleira"
+      ],
+      "price": "R$ 39,90",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/5L8ngGlFr8",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820l9-mnn9qqtsgft092.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Caixa de Som RGB para PC",
+      "specs": [],
+      "price": "R$ 61,98",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/4qCSKpawZO",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-tmyxphe7emiv5b@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Barra de Led RGB Rítmica c/ Sensor de Som",
+      "specs": [],
+      "price": "R$ 27,39",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/10zjlwvXBZ",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7qvez-lhrp9zfph6r12e@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Caixa de Som Led para PC",
+      "specs": [],
+      "price": "R$ 28,86",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/7fWdiLFJx1",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-9eva2ef63yivab@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Fita LED de Sincronia para PC",
+      "specs": [],
+      "price": "R$ 69,99",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/5L8iw9uuNp",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-8257w-mg7pa4jpabyj54@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Teclado Gamer Semi-Mecânico RGB 65%",
+      "specs": [],
+      "price": "R$ 72,88",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/9zuYUsL8h6",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mj8fq5fce41y2d@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Fita Dupla Face Extra Forte",
+      "specs": [
+        "1m/3m/5m/10m"
+      ],
+      "price": "R$ 10,00",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/9pb8IhSVhN",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyy34vwbez394d.webp"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Filtro de Linha iCLMPER 5 tomadas",
+      "specs": [
+        "Bivolt",
+        "5 Tomadas",
+        "10A",
+        "Cabo 1m",
+        "Proteção Contra Surtos Elétricos"
+      ],
+      "price": "R$ 59,48",
+      "store": "Amazon",
+      "link": "https://amzn.to/4fGDqK6",
+      "img": "https://m.media-amazon.com/images/I/51rRxbJnGeL._AC_SX425_.jpg",
+      "old_price": "R$ 89,90"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "Extensão 5 Tomadas",
+      "specs": [
+        "5 Tomadas",
+        "4 USB",
+        "1 USB Tipo-C",
+        "110-220v",
+        "Cabo 1.9m",
+        "2500W"
+      ],
+      "price": "R$ 39,90",
+      "store": "Amazon",
+      "link": "https://amzn.to/4tNe0hy",
+      "img": "https://m.media-amazon.com/images/I/61cqHsWOW7L._AC_SX425_.jpg"
+    },
+    {
+      "cat": "Acessórios",
+      "name": "O-Ring Silenciador p/ Teclado",
+      "specs": [
+        "60-120un",
+        "+ Removedor de Keycap"
+      ],
+      "price": "R$ 10,00",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/3VhHhT5CJq",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mibw7gb4ngn5f6@resize_w450_nl.webp"
+    }
   ],
-  eletronicos: [
-    {"cat": "Eletrônicos", "name": "Samsung Galaxy A36", "specs": ["5G", "256GB", "8GB RAM", "6.7\"", "120Hz", "AMOLED", "50/10MP Frontal/Traseira"], "price": "R$ 1.529,23", "old_price": null, "store": "Amazon", "link": "https://amzn.to/3RfHvLl", "img": "https://m.media-amazon.com/images/I/61Pq2UFyMvL._AC_SX522_.jpg"},
-    {"cat": "Eletrônicos", "name": "Motorola Moto G56", "specs": ["5G", "256GB/24GB", "120Hz", "6.7\"", "50/32MP Frontal/Traseira"], "price": "R$ 1.398,98", "old_price": null, "store": "Amazon", "link": "https://amzn.to/4fozXjg", "img": "https://m.media-amazon.com/images/I/51AqAm0zZ2L._AC_SX522_.jpg"},
-    {"cat": "Eletrônicos", "name": "Motorola Moto G35", "specs": ["5G", "256GB/12GB", "50MP", "6.7\""], "price": "R$ 1.160,00", "old_price": null, "store": "Amazon", "link": "https://amzn.to/4nzjXgA", "img": "https://m.media-amazon.com/images/I/610I-HC1gHL._AC_SX679_.jpg"},
-    {"cat": "Eletrônicos", "name": "Smart TV Philco 32\"", "specs": ["Roku TV", "Dolby Audio HDR10"], "price": "R$ 946,80", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/2VocJleKrE", "img": "https://down-br.img.susercontent.com/file/sg-11134201-820ok-mnajdsdoq51fc4@resize_w450_nl.webp"},
-    {"cat": "Eletrônicos", "name": "Samsung Galaxy A07", "specs": ["256gb/8gb", "50mp/8mp Traseira/Frontal", "90Hz"], "price": "R$ 763,30", "old_price": "R$ 1.142,00", "store": "Mercado Livre", "link": "https://meli.la/1TZyWTA", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_778917-MLA91526601104_092025-F.webp"},
-    {"cat": "Eletrônicos", "name": "Smart TV Britânia Roku Tv 43\"", "specs": ["60Hz", "LED", "HD"], "price": "R$ 1.196,10", "old_price": null, "store": "Amzon", "link": "https://amzn.to/4dtieot", "img": "https://m.media-amazon.com/images/I/51tBZmIc+5L._AC_SY450_.jpg"},
-    {"cat": "Eletrônicos", "name": "Smartwatch Samsung Galaxy FIT3", "specs": [], "price": "R$ 207,55", "old_price": null, "store": "Shopee", "link": "https://s.shopee.com.br/W3ZdvNsT5", "img": "https://down-br.img.susercontent.com/file/br-11134207-820lg-mo5re8lc71moa1@resize_w450_nl.webp"},
-    {"cat": "Eletrônicos", "name": "Smart TV Hisense 50\"", "specs": ["UHD 4K", "QLED", "60Hz"], "price": "R$ 2.029,00", "old_price": "R$ 2.599,00", "store": "Amazon", "link": "https://amzn.to/495DiQq", "img": "https://m.media-amazon.com/images/I/8128wdx+yRL._AC_SX425_.jpg"},
-    {"cat": "Eletrônicos", "name": "Smart TV Britânia Roku Tv 32\"", "specs": [], "price": "R$ 842,93", "old_price": null, "store": "Mercado Livre", "link": "https://meli.la/2aNGssk", "img": "https://http2.mlstatic.com/D_NQ_NP_2X_647739-MLA108301139085_032026-F.webp"},
-  ],
+  "eletronicos": [
+    {
+      "cat": "Eletrônicos",
+      "name": "Samsung Galaxy A36",
+      "specs": [
+        "5G",
+        "256GB",
+        "8GB RAM",
+        "6.7\"",
+        "120Hz",
+        "AMOLED",
+        "50/10MP Frontal/Traseira"
+      ],
+      "price": "R$ 1.529,23",
+      "store": "Amazon",
+      "link": "https://amzn.to/3RfHvLl",
+      "img": "https://m.media-amazon.com/images/I/61Pq2UFyMvL._AC_SX522_.jpg"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Motorola Moto G56",
+      "specs": [
+        "5G",
+        "256GB/24GB",
+        "120Hz",
+        "6.7\"",
+        "50/32MP Frontal/Traseira"
+      ],
+      "price": "R$ 1.398,98",
+      "store": "Amazon",
+      "link": "https://amzn.to/4fozXjg",
+      "img": "https://m.media-amazon.com/images/I/51AqAm0zZ2L._AC_SX522_.jpg"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Motorola Moto G35",
+      "specs": [
+        "5G",
+        "256GB/12GB",
+        "50MP",
+        "6.7\""
+      ],
+      "price": "R$ 1.160,00",
+      "store": "Amazon",
+      "link": "https://amzn.to/4nzjXgA",
+      "img": "https://m.media-amazon.com/images/I/610I-HC1gHL._AC_SX679_.jpg"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Smart TV Philco 32\"",
+      "specs": [
+        "Roku TV",
+        "Dolby Audio"
+      ],
+      "price": "R$ 946,80",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/2VocJleKrE",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-820ok-mnajdsdoq51fc4@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Samsung Galaxy A07",
+      "specs": [
+        "256gb/8gb",
+        "50mp/8mp Traseira/Frontal",
+        "90Hz"
+      ],
+      "price": "R$ 763,30",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/1TZyWTA",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_778917-MLA91526601104_092025-F.webp",
+      "old_price": "R$ 1.142,00"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Smart TV Britânia Roku Tv 43\"",
+      "specs": [
+        "60Hz",
+        "LED",
+        "HD"
+      ],
+      "price": "R$ 1.196,10",
+      "store": "Amzon",
+      "link": "https://amzn.to/4dtieot",
+      "img": "https://m.media-amazon.com/images/I/51tBZmIc+5L._AC_SY450_.jpg"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Smartwatch Samsung Galaxy FIT3",
+      "specs": [],
+      "price": "R$ 207,55",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/W3ZdvNsT5",
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820lg-mo5re8lc71moa1@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Smart TV Hisense 50\"",
+      "specs": [
+        "UHD 4K",
+        "QLED",
+        "60Hz"
+      ],
+      "price": "R$ 2.029,00",
+      "store": "Amazon",
+      "link": "https://amzn.to/495DiQq",
+      "img": "https://m.media-amazon.com/images/I/8128wdx+yRL._AC_SX425_.jpg",
+      "old_price": "R$ 2.599,00"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Smart TV Britânia Roku Tv 32\"",
+      "specs": [],
+      "price": "R$ 842,93",
+      "store": "Mercado Livre",
+      "link": "https://meli.la/2aNGssk",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_647739-MLA108301139085_032026-F.webp"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Samsung A56 5G",
+      "specs": [
+        "128GB",
+        "8GB RAM",
+        "5G",
+        "6.7\"",
+        "50MP"
+      ],
+      "price": "R$ 1.710,26",
+      "store": "Shopee",
+      "link": "https://s.shopee.com.br/8fPNpn9zxU",
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-8261u-mlgbueiynim8e9@resize_w450_nl.webp"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Tablet Huawei MatePad SE 11",
+      "specs": [
+        "128GB",
+        "6GB RAM",
+        "11\"",
+        "8MP/5MP Traseira/Frontal"
+      ],
+      "price": "R$ 1.299,00",
+      "store": "Amazon",
+      "link": "https://amzn.to/4390Qkd",
+      "img": "https://m.media-amazon.com/images/I/61QFi-3M6uL._AC_SX425_.jpg"
+    },
+    {
+      "cat": "Eletrônicos",
+      "name": "Smart TV TCL 55\"",
+      "specs": [
+        "55\"",
+        "144Hz",
+        "QLED",
+        "4K",
+        "Wi-Fi",
+        "Bluetooth"
+      ],
+      "price": "R$ 2.879,10",
+      "store": "Amazon",
+      "link": "https://amzn.to/4wFb7C9",
+      "img": "https://m.media-amazon.com/images/I/71gyasP+iPL._AC_SX425_.jpg"
+    }
+  ]
 };
 
 const builds = [];
+
 
 function makeCard(p) {
   const d = document.createElement('div');
@@ -1130,7 +2338,12 @@ function openModal(p) {
   } else {
     descEl.textContent = p.desc || '';
   }
-  document.getElementById('m-price').textContent = p.price;
+  const _priceEl = document.getElementById('m-price');
+  if (p.old_price) {
+    _priceEl.innerHTML = `<span class="modal-old-price">${p.old_price}</span><span class="modal-price-current">${p.price}</span>`;
+  } else {
+    _priceEl.textContent = p.price;
+  }
   document.getElementById('m-store').textContent = p.store;
   document.getElementById('m-link').href = p.link;
   document.getElementById('modal').classList.add('open');
@@ -1239,6 +2452,191 @@ function clearSearch() {
 
 // índice construído diretamente após renderGrids()
 
+
+// ── VÍDEOS ──
+const videos = [
+  {
+    "title": "Vídeo 1",
+    "link": "#",
+    "products": [
+      {
+        "name": "Produto 1",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 2",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 3",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 4",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      }
+    ]
+  },
+  {
+    "title": "Vídeo 2",
+    "link": "#",
+    "products": [
+      {
+        "name": "Produto 1",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 2",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 3",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 4",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      }
+    ]
+  },
+  {
+    "title": "Vídeo 3",
+    "link": "#",
+    "products": [
+      {
+        "name": "Produto 1",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 2",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 3",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      },
+      {
+        "name": "Produto 4",
+        "price": "R$ 0,00",
+        "cat": "Exemplo",
+        "img": "",
+        "specs": [],
+        "store": "—",
+        "link": "#"
+      }
+    ]
+  }
+];
+
+function renderVideos() {
+  const list = document.getElementById('videos-list');
+  if (!list) return;
+  list.innerHTML = '';
+  videos.forEach((v, i) => {
+    const id = 'vid-' + i;
+    const row = document.createElement('div');
+    row.className = 'video-row';
+
+    const prodCards = (v.products || []).map((p, pi) => {
+      const pj = JSON.stringify(p).replace(/'/g, "&#39;");
+      const priceHtml = p.old_price
+        ? `<div class="prod-old-price">${p.old_price}</div><div class="prod-price" style="font-size:12px;">${p.price}</div>`
+        : `<div class="prod-price" style="font-size:12px;">${p.price}</div>`;
+      return `<div class="prod-card" onclick='openModal(${pj})' style="cursor:pointer;">
+          <div class="prod-thumb" style="height:80px;">
+            ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">` : ''}
+          </div>
+          <div class="prod-info" style="padding:8px 10px;gap:2px;">
+            <div class="prod-cat" style="font-size:9px;">Produto ${pi + 1}</div>
+            <div class="prod-name" style="font-size:11px;line-height:1.3;">${p.name}</div>
+            <div style="margin-top:4px;">${priceHtml}</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    row.innerHTML = `
+      <div class="video-header" onclick="toggleVideo('${id}')">
+        <div class="video-header-left">
+          <div class="video-num">${i + 1}</div>
+          <div class="video-title-text">${v.title}</div>
+        </div>
+        <div class="video-toggle" id="vtog-${id}">▼</div>
+      </div>
+      <div class="video-body" id="${id}">
+        <div class="video-link-row">
+          <div class="video-link-icon">▶</div>
+          <div class="video-link-label">Assistir vídeo</div>
+          <a href="${v.link}" class="video-link-btn" target="_blank" rel="noopener">Abrir ↗</a>
+        </div>
+        ${prodCards ? `<div class="video-products-grid">${prodCards}</div>` : '<div style="padding:16px 20px 18px;font-size:12px;color:var(--muted);">Nenhum produto cadastrado ainda.</div>'}
+      </div>`;
+    list.appendChild(row);
+  });
+}
+
+function toggleVideo(id) {
+  const body = document.getElementById(id);
+  const tog = document.getElementById('vtog-' + id);
+  const open = body.classList.toggle('open');
+  tog.textContent = open ? '▲' : '▼';
+}
+
+renderVideos();
 </script>
 </body>
 </html>
