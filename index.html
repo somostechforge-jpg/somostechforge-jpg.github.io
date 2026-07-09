@@ -945,6 +945,38 @@
     .video-products-grid { grid-template-columns: repeat(2,1fr); padding: 10px 12px 14px; }
   }
 
+
+  /* ── 3 botões de link do vídeo ── */
+  .video-link-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .video-link-btn {
+    font-size: 11px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    border-radius: var(--radius-xs);
+    padding: 5px 11px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .video-link-tiktok {
+    color: #0a0a0a;
+    background: var(--accent);
+  }
+  .video-link-insta {
+    color: #fff;
+    background: #E1306C;
+  }
+  .video-link-extra {
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(200,241,53,0.25);
+  }
+  .video-link-btn:hover { opacity: 0.82; }
+
 </style>
 </head>
 <body>
@@ -1049,7 +1081,7 @@
   </div>
 </div>
 
-<footer>TechForge · Links de afiliado · Todos os preços podem variar</footer>
+<footer>TechForge · Links de afiliado · Preços Sujeitos a Alteração</footer>
 
 <script>
 const products = {
@@ -1065,7 +1097,8 @@ const products = {
       "price": "R$ 2.424,68",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/3qJzVJKvX3",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhlzzqocow06a4@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhlzzqocow06a4@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "PCs Montados",
@@ -1078,7 +1111,8 @@ const products = {
       "price": "R$ 2.765,11",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/9pbCePIXKe",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf3tom6a@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf3tom6a@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "PCs Montados",
@@ -1093,7 +1127,8 @@ const products = {
       "price": "R$ 6.349,43",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/1LceX9SKwc",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjpoyjn709ojc5@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjpoyjn709ojc5@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "PCs Montados",
@@ -1107,7 +1142,8 @@ const products = {
       "price": "R$ 5.948,31",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/9025fHpCwx",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mi1l7hdilukjd3@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mi1l7hdilukjd3@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "PCs Montados",
@@ -1121,7 +1157,8 @@ const products = {
       "price": "R$ 4.559,11",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/AKXTFoDJXb",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf9fye74@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf9fye74@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "PCs Montados",
@@ -1137,7 +1174,8 @@ const products = {
       "price": "R$ 2.841,91",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/qgNwRx1CN",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdwm-m0m3cnutcsit23@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdwm-m0m3cnutcsit23@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "PCs Montados",
@@ -1154,7 +1192,8 @@ const products = {
       "price": "R$ 2.759,91",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/9Kf4bK5sTq",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjq17ka1p98h18@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjq17ka1p98h18@resize_w450_nl.webp",
+      "hidden": ""
     }
   ],
   "pecas": [
@@ -1171,7 +1210,8 @@ const products = {
       "price": "R$ 398,00",
       "store": "Mercado Livre",
       "link": "https://meli.la/15LBuga",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_644232-MLA99455670876_112025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_644232-MLA99455670876_112025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1184,7 +1224,8 @@ const products = {
       "price": "R$ 1.149,98",
       "store": "Amazon",
       "link": "https://amzn.to/4eS5rOD",
-      "img": "https://m.media-amazon.com/images/I/51m7L9bQI8L._AC_SX569_.jpg"
+      "img": "https://m.media-amazon.com/images/I/51m7L9bQI8L._AC_SX569_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1196,7 +1237,8 @@ const products = {
       "price": "R$ 250,00",
       "store": "Mercado Livre",
       "link": "https://meli.la/1X4nL2v",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_603754-MLA99991955697_112025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_603754-MLA99991955697_112025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1209,7 +1251,8 @@ const products = {
       "price": "R$ 559,98",
       "store": "Mercado Livre",
       "link": "https://meli.la/2eFGGwb",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_806163-MLA99416647702_112025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_806163-MLA99416647702_112025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1221,7 +1264,8 @@ const products = {
       "price": "R$ 259,98",
       "store": "Mercado Livre",
       "link": "https://meli.la/1dGiuWM",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_738250-MLB107019844209_022026-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_738250-MLB107019844209_022026-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1233,7 +1277,8 @@ const products = {
       "price": "R$ 409,00",
       "store": "Amazon",
       "link": "https://amzn.to/43eqUKu",
-      "img": "https://m.media-amazon.com/images/I/61Or73-TUHL._AC_SX569_.jpg"
+      "img": "https://m.media-amazon.com/images/I/61Or73-TUHL._AC_SX569_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1246,7 +1291,8 @@ const products = {
       "price": "R$ 263,86",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/8fPFI3Pv10",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdww-mckogua57w3gcd.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdww-mckogua57w3gcd.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1260,7 +1306,8 @@ const products = {
       "price": "R$ 499,90",
       "store": "Mercado Livre",
       "link": "https://meli.la/2xaHiK5",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_825588-MLB89138918089_082025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_825588-MLB89138918089_082025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1273,7 +1320,8 @@ const products = {
       "price": "R$ 135,51",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/7fWYyvOaJp",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ren7-m1r1f2ee4q8930.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ren7-m1r1f2ee4q8930.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1286,7 +1334,8 @@ const products = {
       "price": "R$ 1.705,71",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/7ppzBMyJea",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7qtssqbvvpe0d.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7qtssqbvvpe0d.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1300,7 +1349,8 @@ const products = {
       "price": "R$ 565,48",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/6VKmRR7T2L",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7gz1moves0c3d@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7gz1moves0c3d@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1313,7 +1363,8 @@ const products = {
       "price": "R$ 170,08",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/AKXV0cTJED",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rfgp-m3p2qa48d38d49@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rfgp-m3p2qa48d38d49@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1326,7 +1377,8 @@ const products = {
       "price": "R$ 179,17",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/9fHoDS6zkW",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rffv-m3p2s6mc49473a@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rffv-m3p2s6mc49473a@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1339,7 +1391,8 @@ const products = {
       "price": "R$ 766,80",
       "store": "Shopee-Terabyte",
       "link": "https://s.shopee.com.br/3g0hpXnY6U",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-821en-mgi9xqxveqdldd@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-821en-mgi9xqxveqdldd@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Componentes",
@@ -1352,7 +1405,8 @@ const products = {
       "price": "R$ 504,78",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/1VwDFp6vvf",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7reqh-m8c2m5iuytog77@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7reqh-m8c2m5iuytog77@resize_w450_nl.webp",
+      "hidden": ""
     }
   ],
   "perifericos": [
@@ -1363,7 +1417,8 @@ const products = {
       "price": "R$ 99,34",
       "store": "Mercado Livre",
       "link": "https://meli.la/2iBmaMW",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_618425-MLA106695031651_022026-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_618425-MLA106695031651_022026-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1375,7 +1430,8 @@ const products = {
       "price": "R$ 23,28",
       "store": "Mercado Livre",
       "link": "https://meli.la/2S9nrFE",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_648999-MLA99599197554_122025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_648999-MLA99599197554_122025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1387,7 +1443,8 @@ const products = {
       "price": "R$ 91,78",
       "store": "Mercado Livre",
       "link": "https://meli.la/1xjCRxo",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_857350-MLA107653770031_022026-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_857350-MLA107653770031_022026-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1400,7 +1457,8 @@ const products = {
       "price": "R$ 549,00",
       "store": "Mercado Livre",
       "link": "https://meli.la/13WM51Z",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_652104-MLA96195278152_102025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_652104-MLA96195278152_102025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1415,7 +1473,8 @@ const products = {
       "price": "R$ 689,00",
       "store": "Mercado Livre",
       "link": "https://meli.la/1fVphjh",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_762062-MLA99992079481_112025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_762062-MLA99992079481_112025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1430,7 +1489,8 @@ const products = {
       "price": "R$ 284,99",
       "store": "Mercado Livre",
       "link": "https://meli.la/1KPtHh5",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_702157-MLB89823510629_082025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_702157-MLB89823510629_082025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1442,7 +1502,8 @@ const products = {
       "price": "R$ 39,90",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/3B4IlRedYR",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mh6l4mwv54at84.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mh6l4mwv54at84.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1457,7 +1518,8 @@ const products = {
       "price": "R$ 169,90",
       "store": "Amazon",
       "link": "https://amzn.to/494LsZt",
-      "img": "https://m.media-amazon.com/images/I/51sg9BLSMTL._AC_SX425_.jpg"
+      "img": "https://m.media-amazon.com/images/I/51sg9BLSMTL._AC_SX425_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1472,7 +1534,8 @@ const products = {
       "price": "R$ 239,90",
       "store": "Amazon",
       "link": "https://amzn.to/43cq7cZ",
-      "img": "https://m.media-amazon.com/images/I/71jXjCYR4CL._AC_SX569_.jpg"
+      "img": "https://m.media-amazon.com/images/I/71jXjCYR4CL._AC_SX569_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1486,7 +1549,8 @@ const products = {
       "price": "R$ 129,00",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/4LGGA3XLiS",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7renr-m8dmyyovx193fe@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7renr-m8dmyyovx193fe@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1500,7 +1564,8 @@ const products = {
       "price": "R$ 109,00",
       "store": "Mercado Livre",
       "link": "https://meli.la/2tYQcBf",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_832991-MLB92975138962_092025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_832991-MLB92975138962_092025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1514,7 +1579,8 @@ const products = {
       "price": "R$ 179,00",
       "store": "Mercado Livre",
       "link": "https://meli.la/1jaZJH8",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_828223-MLA99855607665_112025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_828223-MLA99855607665_112025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1527,7 +1593,8 @@ const products = {
       "price": "R$ 199,90",
       "store": "Amazon",
       "link": "https://amzn.to/4wGplCP",
-      "img": "https://m.media-amazon.com/images/I/71OJkNkEs0L._AC_SX569_.jpg"
+      "img": "https://m.media-amazon.com/images/I/71OJkNkEs0L._AC_SX569_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1545,7 +1612,8 @@ const products = {
       "price": "R$ 810,90",
       "store": "Mercado Livre",
       "link": "https://meli.la/1ymc5A8",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_962448-MLA99509432382_112025-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_962448-MLA99509432382_112025-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1558,7 +1626,8 @@ const products = {
       "price": "R$ 763,69",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/4fsxPUKmpD",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-midfdnghd6o3bd.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-midfdnghd6o3bd.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1573,7 +1642,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/2MKos3d",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_667742-MLA91967052843_092025-F.webp",
-      "old_price": "R$ 1.089,99"
+      "old_price": "R$ 1.089,99",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1586,7 +1656,8 @@ const products = {
       "price": "R$ 322,41",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/1BJG65perb",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-820m6-mnf5ojvbpcsg7d@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820m6-mnf5ojvbpcsg7d@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1601,7 +1672,8 @@ const products = {
       "price": "R$ 999,99",
       "store": "Amazon",
       "link": "https://amzn.to/49BZOAC",
-      "img": "https://m.media-amazon.com/images/I/61GElLiaorL._AC_SX425_.jpg"
+      "img": "https://m.media-amazon.com/images/I/61GElLiaorL._AC_SX425_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1616,7 +1688,8 @@ const products = {
       "price": "R$ 471,76",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/8pihYFqOag",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-8260a-mm6gu44z7z0g28@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-8260a-mm6gu44z7z0g28@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1631,7 +1704,8 @@ const products = {
       "price": "R$ 486,51",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/5L8pNvift6",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-820lr-mnkaxth7ug3qde@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-820lr-mnkaxth7ug3qde@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1642,7 +1716,8 @@ const products = {
       "price": "R$ 643,68",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/5VSFaxYf7H",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mf1nbmaty22v6a.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mf1nbmaty22v6a.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1656,7 +1731,8 @@ const products = {
       "price": "R$ 1.489,00",
       "store": "Amazon",
       "link": "https://amzn.to/430bsln",
-      "img": "https://m.media-amazon.com/images/I/518eipDuOtL._AC_SX425_.jpg"
+      "img": "https://m.media-amazon.com/images/I/518eipDuOtL._AC_SX425_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1671,16 +1747,23 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/3PmEDf9",
       "img": "https://m.media-amazon.com/images/I/61aIuJu0M0L._AC_SX425_.jpg",
-      "old_price": "R$ 1.199,00"
+      "old_price": "R$ 1.199,00",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
       "name": "Teclado Mecânico Personalizado Courtesy",
-      "specs": ["65%", "Acessórios", "Keycaps Personalizadas", "Switch Red Linear"],
+      "specs": [
+        "65%",
+        "Acessórios",
+        "Keycaps Personalizadas",
+        "Switch Red Linear"
+      ],
       "price": "R$ 193,72",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/1BJMtFEV8v",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mkb0uvxdy2v564@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mkb0uvxdy2v564@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1693,7 +1776,8 @@ const products = {
       "price": "R$ 105,45",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/4qCfGD3LJV",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-821di-mh7a1gvpbimk36@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-821di-mh7a1gvpbimk36@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1705,7 +1789,8 @@ const products = {
       "price": "R$ 22,66",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/BQphlQfzW",
-      "img": "https://down-br.img.susercontent.com/file/br-11134211-7r98o-m16gydn4rbyme1@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134211-7r98o-m16gydn4rbyme1@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1718,16 +1803,21 @@ const products = {
       "price": "R$ 42,90",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/5q5CSRXDgo",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-820m0-mnoev57vb75s09@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820m0-mnoev57vb75s09@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
       "name": "Teclado Gamer Semi-Mecânico RGB 65%",
-      "specs": ["RGB", "65%"],
+      "specs": [
+        "RGB",
+        "65%"
+      ],
       "price": "R$ 72,88",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/9zuYUsL8h6",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mj8fq5fce41y2d@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mj8fq5fce41y2d@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1742,16 +1832,22 @@ const products = {
       "price": "R$ 1.299,98",
       "store": "Amazon",
       "link": "https://amzn.to/4dqGVTM",
-      "img": "https://m.media-amazon.com/images/I/71mc98kWRjL._AC_SX425_.jpg"
+      "img": "https://m.media-amazon.com/images/I/71mc98kWRjL._AC_SX425_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
       "name": "Teclado Semi-Mecânico RBG 80%",
-      "specs": ["Com Fio (1.9m)", "80%", "RGB"],
+      "specs": [
+        "Com Fio (1.9m)",
+        "80%",
+        "RGB"
+      ],
       "price": "R$ 49,88",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/9fHv2y4hPf",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxpnvmsutmtbc7@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxpnvmsutmtbc7@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
@@ -1765,16 +1861,22 @@ const products = {
       "price": "R$ 135,93",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/1qZ3itTbTh",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhhmvq6k4irm23@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhhmvq6k4irm23@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Periféricos",
       "name": "Mancer Aura",
-      "specs": ["Rainbow", "Drivers 50mm", "Branco"],
+      "specs": [
+        "Rainbow",
+        "Drivers 50mm",
+        "Branco"
+      ],
       "price": "R$ 99,17",
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/6L1ViJigBs",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-82260-mhg61hiy3w937f@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-82260-mhg61hiy3w937f@resize_w450_nl.webp",
+      "hidden": ""
     }
   ],
   "acessorios": [
@@ -1785,7 +1887,8 @@ const products = {
       "price": "R$ 29,99",
       "store": "Mercado Livre",
       "link": "https://meli.la/14SmRNU",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_918222-MLB79491540848_102024-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_918222-MLB79491540848_102024-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1797,7 +1900,8 @@ const products = {
       "price": "R$ 16,98",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/Lk7imp0m1",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1808,7 +1912,8 @@ const products = {
       "price": "R$ 39,90",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/5L8ngGlFr8",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-820l9-mnn9qqtsgft092.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820l9-mnn9qqtsgft092.webp",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1817,7 +1922,8 @@ const products = {
       "price": "R$ 56,96",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/4qCSKpawZO",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-tmyxphe7emiv5b@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-tmyxphe7emiv5b@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1826,7 +1932,8 @@ const products = {
       "price": "R$ 27,39",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/10zjlwvXBZ",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7qvez-lhrp9zfph6r12e@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-7qvez-lhrp9zfph6r12e@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1835,7 +1942,8 @@ const products = {
       "price": "R$ 28,86",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/7fWdiLFJx1",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-9eva2ef63yivab@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-9eva2ef63yivab@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1844,7 +1952,8 @@ const products = {
       "price": "R$ 69,99",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/5L8iw9uuNp",
-      "img": "https://down-br.img.susercontent.com/file/sg-11134201-8257w-mg7pa4jpabyj54@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/sg-11134201-8257w-mg7pa4jpabyj54@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1855,7 +1964,8 @@ const products = {
       "price": "R$ 10,00",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/9pb8IhSVhN",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyy34vwbez394d.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyy34vwbez394d.webp",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1871,7 +1981,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4fGDqK6",
       "img": "https://m.media-amazon.com/images/I/51rRxbJnGeL._AC_SX425_.jpg",
-      "old_price": "R$ 89,90"
+      "old_price": "R$ 89,90",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1887,7 +1998,8 @@ const products = {
       "price": "R$ 55,99",
       "store": "Amazon",
       "link": "https://amzn.to/4tNe0hy",
-      "img": "https://m.media-amazon.com/images/I/61cqHsWOW7L._AC_SX425_.jpg"
+      "img": "https://m.media-amazon.com/images/I/61cqHsWOW7L._AC_SX425_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Acessórios",
@@ -1899,7 +2011,8 @@ const products = {
       "price": "R$ 10,00",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/3VhHhT5CJq",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mibw7gb4ngn5f6@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mibw7gb4ngn5f6@resize_w450_nl.webp",
+      "hidden": ""
     }
   ],
   "eletronicos": [
@@ -1918,7 +2031,8 @@ const products = {
       "price": "R$ 1.887,78",
       "store": "Amazon",
       "link": "https://amzn.to/3RfHvLl",
-      "img": "https://m.media-amazon.com/images/I/61Pq2UFyMvL._AC_SX522_.jpg"
+      "img": "https://m.media-amazon.com/images/I/61Pq2UFyMvL._AC_SX522_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Eletrônicos",
@@ -1933,7 +2047,8 @@ const products = {
       "price": "R$ 1.349,90",
       "store": "Amazon",
       "link": "https://amzn.to/4fozXjg",
-      "img": "https://m.media-amazon.com/images/I/51AqAm0zZ2L._AC_SX522_.jpg"
+      "img": "https://m.media-amazon.com/images/I/51AqAm0zZ2L._AC_SX522_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Eletrônicos",
@@ -1947,7 +2062,8 @@ const products = {
       "price": "R$ 1.054,89",
       "store": "Amazon",
       "link": "https://amzn.to/4nzjXgA",
-      "img": "https://m.media-amazon.com/images/I/610I-HC1gHL._AC_SX679_.jpg"
+      "img": "https://m.media-amazon.com/images/I/610I-HC1gHL._AC_SX679_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Eletrônicos",
@@ -1961,7 +2077,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1TZyWTA",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_778917-MLA91526601104_092025-F.webp",
-      "old_price": "R$ 1.142,00"
+      "old_price": "R$ 1.142,00",
+      "hidden": ""
     },
     {
       "cat": "Eletrônicos",
@@ -1970,7 +2087,8 @@ const products = {
       "price": "R$ 194,65",
       "store": "Shopee",
       "link": "https://s.shopee.com.br/W3ZdvNsT5",
-      "img": "https://down-br.img.susercontent.com/file/br-11134207-820lg-mo5re8lc71moa1@resize_w450_nl.webp"
+      "img": "https://down-br.img.susercontent.com/file/br-11134207-820lg-mo5re8lc71moa1@resize_w450_nl.webp",
+      "hidden": ""
     },
     {
       "cat": "Eletrônicos",
@@ -1984,7 +2102,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/495DiQq",
       "img": "https://m.media-amazon.com/images/I/8128wdx+yRL._AC_SX425_.jpg",
-      "old_price": "R$ 2.599,00"
+      "old_price": "R$ 2.599,00",
+      "hidden": ""
     },
     {
       "cat": "Eletrônicos",
@@ -1993,7 +2112,8 @@ const products = {
       "price": "R$ 842,93",
       "store": "Mercado Livre",
       "link": "https://meli.la/2aNGssk",
-      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_647739-MLA108301139085_032026-F.webp"
+      "img": "https://http2.mlstatic.com/D_NQ_NP_2X_647739-MLA108301139085_032026-F.webp",
+      "hidden": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2007,7 +2127,8 @@ const products = {
       "price": "R$ 1.299,00",
       "store": "Amazon",
       "link": "https://amzn.to/4390Qkd",
-      "img": "https://m.media-amazon.com/images/I/61QFi-3M6uL._AC_SX425_.jpg"
+      "img": "https://m.media-amazon.com/images/I/61QFi-3M6uL._AC_SX425_.jpg",
+      "hidden": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2023,7 +2144,8 @@ const products = {
       "price": "R$ 3.509,05",
       "store": "Amazon",
       "link": "https://amzn.to/4wFb7C9",
-      "img": "https://m.media-amazon.com/images/I/71gyasP+iPL._AC_SX425_.jpg"
+      "img": "https://m.media-amazon.com/images/I/71gyasP+iPL._AC_SX425_.jpg",
+      "hidden": ""
     }
   ]
 };
@@ -2032,6 +2154,9 @@ const builds = [];
 
 
 function makeCard(p) {
+  // Se produto tiver texto em hidden, não renderiza
+  if (p.hidden && p.hidden.trim() !== '') return null;
+
   const d = document.createElement('div');
   d.className = 'prod-card';
   const thumbContent = p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">` : (p.icon || '');
@@ -2066,7 +2191,7 @@ function makeCard(p) {
 function renderGrids() {
   ['pcs','pecas','perifericos','acessorios','eletronicos'].forEach(k => {
     const g = document.getElementById('grid-' + k);
-    products[k].forEach(p => g.appendChild(makeCard(p)));
+    products[k].forEach(p => { const c = makeCard(p); if (c) g.appendChild(c); });
   });
 }
 
@@ -2268,7 +2393,10 @@ const videos = [
         "price": "R$ 16,98",
         "cat": "Acessórios",
         "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp",
-        "specs": ["5m", "IP65"],
+        "specs": [
+          "5m",
+          "IP65"
+        ],
         "store": "Shopee",
         "link": "https://s.shopee.com.br/Lk7imp0m1"
       },
@@ -2277,7 +2405,9 @@ const videos = [
         "price": "R$ 39,90",
         "cat": "Acessórios",
         "img": "https://down-br.img.susercontent.com/file/br-11134207-820l9-mnn9qqtsgft092.webp",
-        "specs": ["c/ Kit Ganchos e Prateleira"],
+        "specs": [
+          "c/ Kit Ganchos e Prateleira"
+        ],
         "store": "Shopee",
         "link": "https://s.shopee.com.br/5L8ngGlFr8"
       },
@@ -2308,7 +2438,10 @@ const videos = [
         "store": "Shopee",
         "link": "https://s.shopee.com.br/10zjlwvXBZ"
       }
-    ]
+    ],
+    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642715412001508615?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+    "instagram": "",
+    "extra": ""
   },
   {
     "title": "Teclados Gamer Baratos 2026",
@@ -2328,7 +2461,12 @@ const videos = [
         "price": "R$ 119,00",
         "cat": "Periféricos",
         "img": "https://http2.mlstatic.com/D_NQ_NP_2X_832991-MLB92975138962_092025-F.webp",
-        "specs": ["Switch Blue", "Usb", "Abnt", "Mecânico"],
+        "specs": [
+          "Switch Blue",
+          "Usb",
+          "Abnt",
+          "Mecânico"
+        ],
         "store": "Mercado Livre",
         "link": "https://meli.la/2tYQcBf"
       },
@@ -2337,7 +2475,12 @@ const videos = [
         "price": "R$ 134,18",
         "cat": "Periféricos",
         "img": "https://down-br.img.susercontent.com/file/sg-11134201-7renr-m8dmyyovx193fe@resize_w450_nl.webp",
-        "specs": ["RGB", "ABNT2", "Switch Huano Vermelho", "Mecânico"],
+        "specs": [
+          "RGB",
+          "ABNT2",
+          "Switch Huano Vermelho",
+          "Mecânico"
+        ],
         "store": "Shopee-Pichau",
         "link": "https://s.shopee.com.br/4LGGA3XLiS"
       },
@@ -2346,11 +2489,20 @@ const videos = [
         "price": "R$ 284,99",
         "cat": "Periféricos",
         "img": "https://http2.mlstatic.com/D_NQ_NP_2X_702157-MLB89823510629_082025-F.webp",
-        "specs": ["Mecânico", "Sem Fio", "Tri-mode", "Bluetooth", "Switch Blueberry"],
+        "specs": [
+          "Mecânico",
+          "Sem Fio",
+          "Tri-mode",
+          "Bluetooth",
+          "Switch Blueberry"
+        ],
         "store": "Mercado Livre",
         "link": "https://meli.la/1KPtHh5"
       }
-    ]
+    ],
+    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642721833988525319?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+    "instagram": "",
+    "extra": ""
   },
   {
     "title": "PCs Montados (Entry-High end)",
@@ -2361,7 +2513,14 @@ const videos = [
         "price": "R$ 2841,91",
         "cat": "PCs Montados",
         "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdwm-m0m3cnutcsit23@resize_w450_nl.webp",
-        "specs": ["Ryzen 5 3400g", "16GB DDR4", "SSD 480GB", "Fonte 400W 80 Plus", "Monitor 21\" 75Hz", "Kit Teclado/Mouse/Headset Completo"],
+        "specs": [
+          "Ryzen 5 3400g",
+          "16GB DDR4",
+          "SSD 480GB",
+          "Fonte 400W 80 Plus",
+          "Monitor 21\" 75Hz",
+          "Kit Teclado/Mouse/Headset Completo"
+        ],
         "store": "Shopee-Pichau",
         "link": "https://s.shopee.com.br/qgNwRx1CN"
       },
@@ -2370,7 +2529,12 @@ const videos = [
         "price": "R$ 2657,50",
         "cat": "PCs Montados",
         "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf3tom6a@resize_w450_nl.webp",
-        "specs": ["Ryzen 5 5600GT", "16GB DDR4", "SSD 240GB", "Fonte 400W 80 Plus"],
+        "specs": [
+          "Ryzen 5 5600GT",
+          "16GB DDR4",
+          "SSD 240GB",
+          "Fonte 400W 80 Plus"
+        ],
         "store": "Shopee-Pichau",
         "link": "https://s.shopee.com.br/9pbCePIXKe"
       },
@@ -2379,7 +2543,12 @@ const videos = [
         "price": "R$ 4725,51",
         "cat": "PCs Montados",
         "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf9fye74@resize_w450_nl.webp",
-        "specs": ["GeForce RTX 3050 6GB", "16GB DDR4", "SSD 1TB", "Fonte 600W 80 Plus"],
+        "specs": [
+          "GeForce RTX 3050 6GB",
+          "16GB DDR4",
+          "SSD 1TB",
+          "Fonte 600W 80 Plus"
+        ],
         "store": "Shopee-Pichau",
         "link": "https://s.shopee.com.br/AKXTFoDJXb"
       },
@@ -2388,11 +2557,20 @@ const videos = [
         "price": "R$ 5509,91",
         "cat": "PCs Montados",
         "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjpoyjn709ojc5@resize_w450_nl.webp",
-        "specs": ["Water Cooler", "Radeon RX 7600 8GB", "16GB DDR4", "SSD M.2 512GB", "Fonte 600W 80 Plus"],
+        "specs": [
+          "Water Cooler",
+          "Radeon RX 7600 8GB",
+          "16GB DDR4",
+          "SSD M.2 512GB",
+          "Fonte 600W 80 Plus"
+        ],
         "store": "Shopee-Pichau",
         "link": "https://s.shopee.com.br/1LceX9SKwc"
-      },
-    ]
+      }
+    ],
+    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642723019466624263?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+    "instagram": "",
+    "extra": ""
   },
   {
     "title": "Fones/Headsets No Precinho",
@@ -2403,7 +2581,10 @@ const videos = [
         "price": "R$ 22,66",
         "cat": "Periféricos",
         "img": "https://down-br.img.susercontent.com/file/br-11134211-7r98o-m16gydn4rbyme1@resize_w450_nl.webp",
-        "specs": ["Profissional", "c/ Microfone"],
+        "specs": [
+          "Profissional",
+          "c/ Microfone"
+        ],
         "store": "Shopee",
         "link": "https://s.shopee.com.br/BQphlQfzW"
       },
@@ -2412,7 +2593,11 @@ const videos = [
         "price": "R$ 42,90",
         "cat": "Periféricos",
         "img": "https://down-br.img.susercontent.com/file/br-11134207-820m0-mnoev57vb75s09@resize_w450_nl.webp",
-        "specs": ["Profissional", "c/ Microfone", "Driver Dinâmico Magnético"],
+        "specs": [
+          "Profissional",
+          "c/ Microfone",
+          "Driver Dinâmico Magnético"
+        ],
         "store": "Shopee",
         "link": "https://s.shopee.com.br/5q5CSRXDgo"
       },
@@ -2421,7 +2606,11 @@ const videos = [
         "price": "R$ 76,42",
         "cat": "Periféricos",
         "img": "https://down-br.img.susercontent.com/file/sg-11134201-8224y-mhg6kdts2t4we3@resize_w450_nl.webp",
-        "specs": ["Raibow", "Drivers 50mm", "Branco"],
+        "specs": [
+          "Raibow",
+          "Drivers 50mm",
+          "Branco"
+        ],
         "store": "Shopee-Pichau",
         "link": "https://s.shopee.com.br/AUr4gA7Kjv"
       },
@@ -2430,7 +2619,11 @@ const videos = [
         "price": "R$ 110,84",
         "cat": "Periféricos",
         "img": "https://down-br.img.susercontent.com/file/sg-11134201-82260-mhg61hiy3w937f@resize_w450_nl.webp",
-        "specs": ["Rainbow", "Drivers 50mm", "Branco"],
+        "specs": [
+          "Rainbow",
+          "Drivers 50mm",
+          "Branco"
+        ],
         "store": "Shopee-Pichau",
         "link": "https://s.shopee.com.br/6L1ViJigBs"
       },
@@ -2439,14 +2632,21 @@ const videos = [
         "price": "R$ 214,00",
         "cat": "Periféricos",
         "img": "https://http2.mlstatic.com/D_NQ_NP_2X_828223-MLA99855607665_112025-F.webp",
-        "specs": ["Conector P2", "20Hz-20kHz", "Cabo 1.7m", "Branco Com Vermelho"],
+        "specs": [
+          "Conector P2",
+          "20Hz-20kHz",
+          "Cabo 1.7m",
+          "Branco Com Vermelho"
+        ],
         "store": "Shopee",
         "link": "https://meli.la/1jaZJH8"
       }
-    
-    ]   
-    },
-    {
+    ],
+    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7643168490261597447?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+    "instagram": "",
+    "extra": ""
+  },
+  {
     "title": "Monitores Baratos em 2026",
     "link": "https://www.tiktok.com/@techforge_hub/photo/7643571051032628487?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
     "products": [
@@ -2455,7 +2655,12 @@ const videos = [
         "price": "R$ 427,50",
         "cat": "Periféricos",
         "img": "https://down-br.img.susercontent.com/file/sg-11134201-81zv9-mik6wyanjpq97d@resize_w450_nl.webp",
-        "specs": ["VA,Full HD", "1ms", "100Hz", "23.8\""],
+        "specs": [
+          "VA,Full HD",
+          "1ms",
+          "100Hz",
+          "23.8\""
+        ],
         "store": "Shopee-Pichau",
         "link": "https://s.shopee.com.br/3qKCRwCFWd"
       },
@@ -2464,7 +2669,13 @@ const videos = [
         "price": "R$ 660,68",
         "cat": "Periféricos",
         "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ravp-mayhqkhk3yj4f7@resize_w450_nl.webp",
-        "specs": ["Full HD", "24\"", "IPS", "180Hz", "1ms"],
+        "specs": [
+          "Full HD",
+          "24\"",
+          "IPS",
+          "180Hz",
+          "1ms"
+        ],
         "store": "Shopee",
         "link": "https://s.shopee.com.br/70H3NEsoqU"
       },
@@ -2473,7 +2684,13 @@ const videos = [
         "price": "R$ 999,90",
         "cat": "Periféricos",
         "img": "https://m.media-amazon.com/images/I/61GElLiaorL._AC_SX425_.jpg",
-        "specs": ["IPS", "1ms", "27\"", "Full HD", "180Hz"],
+        "specs": [
+          "IPS",
+          "1ms",
+          "27\"",
+          "Full HD",
+          "180Hz"
+        ],
         "store": "Amazon",
         "link": "https://amzn.to/49BZOAC"
       },
@@ -2482,12 +2699,21 @@ const videos = [
         "price": "R$ 1299,98",
         "cat": "Periféricos",
         "img": "https://m.media-amazon.com/images/I/71mc98kWRjL._AC_SX425_.jpg",
-        "specs": ["310Hz", "0.3ms", "IPS", "25\"", "Base Ajustável"],
+        "specs": [
+          "310Hz",
+          "0.3ms",
+          "IPS",
+          "25\"",
+          "Base Ajustável"
+        ],
         "store": "Amazon",
         "link": "https://amzn.to/4dqGVTM"
       }
-    ]   
-    }, 
+    ],
+    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7643571051032628487?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+    "instagram": "",
+    "extra": ""
+  }
 ];
 
 function renderVideos() {
@@ -2500,6 +2726,7 @@ function renderVideos() {
     row.className = 'video-row';
 
     const prodCards = (v.products || []).map((p, pi) => {
+      if (p.hidden && p.hidden.trim() !== '') return '';
       const pj = JSON.stringify(p).replace(/'/g, "&#39;");
       const priceHtml = p.old_price
         ? `<div class="prod-old-price">${p.old_price}</div><div class="prod-price" style="font-size:12px;">${p.price}</div>`
@@ -2516,6 +2743,12 @@ function renderVideos() {
         </div>`;
     }).join('');
 
+    // Botões de link — só aparecem se o campo tiver URL preenchida
+    const linkTiktok   = v.tiktok    ? `<a href="${v.tiktok}"    class="video-link-btn video-link-tiktok"    target="_blank" rel="noopener">TikTok ↗</a>`    : '';
+    const linkInsta    = v.instagram ? `<a href="${v.instagram}" class="video-link-btn video-link-insta"     target="_blank" rel="noopener">Instagram ↗</a>` : '';
+    const linkExtra    = v.extra     ? `<a href="${v.extra}"     class="video-link-btn video-link-extra"     target="_blank" rel="noopener">Ver ↗</a>`        : '';
+    const hasLinks = linkTiktok || linkInsta || linkExtra;
+
     row.innerHTML = `
       <div class="video-header" onclick="toggleVideo('${id}')">
         <div class="video-header-left">
@@ -2525,11 +2758,11 @@ function renderVideos() {
         <div class="video-toggle" id="vtog-${id}">▼</div>
       </div>
       <div class="video-body" id="${id}">
-        <div class="video-link-row">
+        ${hasLinks ? `<div class="video-link-row">
           <div class="video-link-icon">▶</div>
-          <div class="video-link-label">Assistir vídeo</div>
-          <a href="${v.link}" class="video-link-btn" target="_blank" rel="noopener">Abrir ↗</a>
-        </div>
+          <div class="video-link-label">Assistir no:</div>
+          <div class="video-link-btns">${linkTiktok}${linkInsta}${linkExtra}</div>
+        </div>` : ''}
         ${prodCards ? `<div class="video-products-grid">${prodCards}</div>` : '<div style="padding:16px 20px 18px;font-size:12px;color:var(--muted);">Nenhum produto cadastrado ainda.</div>'}
       </div>`;
     list.appendChild(row);
