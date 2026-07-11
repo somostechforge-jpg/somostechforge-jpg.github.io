@@ -93,7 +93,7 @@
   }
   
   .hero > * {
-    max-width: 900px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -159,7 +159,7 @@
   }
 
   .tabs {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     gap: 0;
@@ -191,9 +191,9 @@
 
   /* CONTENT */
   .content {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 32px 24px 64px;
+    padding: 32px 32px 64px;
   }
 
   .section { display: none; }
@@ -212,8 +212,8 @@
   /* PRODUCT GRID */
   .prod-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
     margin-bottom: 40px;
   }
 
@@ -234,7 +234,7 @@
   }
 
   .prod-thumb {
-    height: 100px;
+    height: 130px;
     background: var(--surface2);
     display: flex;
     align-items: center;
@@ -303,31 +303,18 @@
     flex-shrink: 0;
   }
 
-  .prod-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 8px;
-  }
+  
 
   .prod-price {
     font-family: 'Outfit', sans-serif;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--accent);
+    white-space: nowrap;
+    letter-spacing: -0.3px;
   }
 
-  .prod-store {
-    font-size: 10px;
-    color: var(--muted);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    padding: 2px 8px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
+  
 
   .prod-btn {
     display: block;
@@ -724,26 +711,6 @@
     font-size: 11px;
   }
 
-  .prod-old-price {
-    font-size: 11px;
-    color: var(--muted);
-    text-decoration: line-through;
-    line-height: 1.2;
-  }
-  .modal-old-price {
-    display: block;
-    font-size: 14px;
-    color: var(--muted);
-    text-decoration: line-through;
-    margin-bottom: 2px;
-  }
-  .modal-price-current {
-    font-family: 'Syne', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--accent);
-  }
-
   .search-bar-wrap {
     position: sticky;
     top: 60px;
@@ -754,7 +721,7 @@
     padding: 10px 24px;
   }
   .search-inner {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     gap: 10px;
@@ -815,7 +782,7 @@
   .search-clear.visible { display: block; }
   .search-clear:hover { color: var(--text); }
   .search-results-info {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 12px auto 0;
     font-size: 12px;
     color: var(--muted);
@@ -830,33 +797,6 @@
     font-size: 14px;
   }
   .prod-card.hidden { display: none; }
-
-  /* ── PREÇO ANTIGO ── */
-  .prod-old-price {
-    font-family: 'Outfit', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--muted);
-    text-decoration: line-through;
-    line-height: 1.2;
-  }
-  .modal-old-price {
-    font-family: 'Outfit', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--muted);
-    text-decoration: line-through;
-    display: block;
-    line-height: 1.2;
-    margin-bottom: 2px;
-  }
-  .modal-price-current {
-    font-family: 'Outfit', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--accent);
-    display: block;
-  }
 
   /* ── VÍDEOS ── */
   .video-row {
@@ -976,6 +916,48 @@
     border: 1px solid rgba(200,241,53,0.25);
   }
   .video-link-btn:hover { opacity: 0.82; }
+
+
+  /* ── LOJA ACIMA DO PREÇO ── */
+  .prod-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    margin-top: 8px;
+  }
+  .prod-footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .prod-store {
+    font-size: 9px;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 2px 8px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .prod-promo-badge {
+    font-size: 9px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0ff;
+    background: rgba(0, 255, 255, 0.10);
+    border: 1px solid rgba(0, 255, 255, 0.35);
+    border-radius: 4px;
+    padding: 2px 7px;
+    white-space: nowrap;
+    box-shadow: 0 0 6px rgba(0,255,255,0.18);
+  }
 
 </style>
 </head>
@@ -1098,7 +1080,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/3qJzVJKvX3",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhlzzqocow06a4@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "PCs Montados",
@@ -1112,7 +1095,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/9pbCePIXKe",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf3tom6a@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "PCs Montados",
@@ -1128,7 +1112,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/1LceX9SKwc",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjpoyjn709ojc5@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "PCs Montados",
@@ -1143,7 +1128,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/9025fHpCwx",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mi1l7hdilukjd3@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "PCs Montados",
@@ -1158,7 +1144,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/AKXTFoDJXb",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf9fye74@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "PCs Montados",
@@ -1175,7 +1162,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/qgNwRx1CN",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdwm-m0m3cnutcsit23@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "PCs Montados",
@@ -1193,7 +1181,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/9Kf4bK5sTq",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjq17ka1p98h18@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     }
   ],
   "pecas": [
@@ -1211,7 +1200,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/15LBuga",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_644232-MLA99455670876_112025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1225,7 +1215,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4eS5rOD",
       "img": "https://m.media-amazon.com/images/I/51m7L9bQI8L._AC_SX569_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1238,7 +1229,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1X4nL2v",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_603754-MLA99991955697_112025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1252,7 +1244,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/2eFGGwb",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_806163-MLA99416647702_112025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1265,7 +1258,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1dGiuWM",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_738250-MLB107019844209_022026-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1278,7 +1272,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/43eqUKu",
       "img": "https://m.media-amazon.com/images/I/61Or73-TUHL._AC_SX569_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1292,7 +1287,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/8fPFI3Pv10",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdww-mckogua57w3gcd.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1307,7 +1303,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/2xaHiK5",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_825588-MLB89138918089_082025-F.webp",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1321,7 +1318,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/7fWYyvOaJp",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ren7-m1r1f2ee4q8930.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1335,7 +1333,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/7ppzBMyJea",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7qtssqbvvpe0d.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1350,7 +1349,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/6VKmRR7T2L",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m7gz1moves0c3d@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1364,7 +1364,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/AKXV0cTJED",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rfgp-m3p2qa48d38d49@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1378,7 +1379,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/9fHoDS6zkW",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rffv-m3p2s6mc49473a@resize_w450_nl.webp",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1392,7 +1394,8 @@ const products = {
       "store": "Shopee-Terabyte",
       "link": "https://s.shopee.com.br/3g0hpXnY6U",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-821en-mgi9xqxveqdldd@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Componentes",
@@ -1406,7 +1409,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/1VwDFp6vvf",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7reqh-m8c2m5iuytog77@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     }
   ],
   "perifericos": [
@@ -1418,7 +1422,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/2iBmaMW",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_618425-MLA106695031651_022026-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1431,7 +1436,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/2S9nrFE",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_648999-MLA99599197554_122025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1444,7 +1450,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1xjCRxo",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_857350-MLA107653770031_022026-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1458,7 +1465,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/13WM51Z",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_652104-MLA96195278152_102025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1474,7 +1482,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1fVphjh",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_762062-MLA99992079481_112025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1490,7 +1499,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1KPtHh5",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_702157-MLB89823510629_082025-F.webp",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1503,7 +1513,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/3B4IlRedYR",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mh6l4mwv54at84.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1519,7 +1530,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/494LsZt",
       "img": "https://m.media-amazon.com/images/I/51sg9BLSMTL._AC_SX425_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1535,7 +1547,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/43cq7cZ",
       "img": "https://m.media-amazon.com/images/I/71jXjCYR4CL._AC_SX569_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1550,7 +1563,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/4LGGA3XLiS",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7renr-m8dmyyovx193fe@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1565,7 +1579,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/2tYQcBf",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_832991-MLB92975138962_092025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1580,7 +1595,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1jaZJH8",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_828223-MLA99855607665_112025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1594,7 +1610,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4wGplCP",
       "img": "https://m.media-amazon.com/images/I/71OJkNkEs0L._AC_SX569_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1613,7 +1630,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1ymc5A8",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_962448-MLA99509432382_112025-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1627,7 +1645,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/4fsxPUKmpD",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-midfdnghd6o3bd.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1642,8 +1661,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/2MKos3d",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_667742-MLA91967052843_092025-F.webp",
-      "old_price": "R$ 1.089,99",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1657,7 +1676,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/1BJG65perb",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-820m6-mnf5ojvbpcsg7d@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1673,7 +1693,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/49BZOAC",
       "img": "https://m.media-amazon.com/images/I/61GElLiaorL._AC_SX425_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1689,7 +1710,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/8pihYFqOag",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-8260a-mm6gu44z7z0g28@resize_w450_nl.webp",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1705,7 +1727,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/5L8pNvift6",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-820lr-mnkaxth7ug3qde@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1717,7 +1740,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/5VSFaxYf7H",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mf1nbmaty22v6a.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1732,7 +1756,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/430bsln",
       "img": "https://m.media-amazon.com/images/I/518eipDuOtL._AC_SX425_.jpg",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1747,8 +1772,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/3PmEDf9",
       "img": "https://m.media-amazon.com/images/I/61aIuJu0M0L._AC_SX425_.jpg",
-      "old_price": "R$ 1.199,00",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1763,7 +1788,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/1BJMtFEV8v",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mkb0uvxdy2v564@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1777,7 +1803,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/4qCfGD3LJV",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-821di-mh7a1gvpbimk36@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1790,7 +1817,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/BQphlQfzW",
       "img": "https://down-br.img.susercontent.com/file/br-11134211-7r98o-m16gydn4rbyme1@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1804,7 +1832,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/5q5CSRXDgo",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-820m0-mnoev57vb75s09@resize_w450_nl.webp",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1820,7 +1849,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4dqGVTM",
       "img": "https://m.media-amazon.com/images/I/71mc98kWRjL._AC_SX425_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1834,7 +1864,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/9fHv2y4hPf",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lxpnvmsutmtbc7@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1849,7 +1880,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/1qZ3itTbTh",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhhmvq6k4irm23@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Periféricos",
@@ -1863,7 +1895,8 @@ const products = {
       "store": "Shopee-Pichau",
       "link": "https://s.shopee.com.br/6L1ViJigBs",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-82260-mhg61hiy3w937f@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     }
   ],
   "acessorios": [
@@ -1875,7 +1908,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/14SmRNU",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_918222-MLB79491540848_102024-F.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1888,7 +1922,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/Lk7imp0m1",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1900,7 +1935,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/5L8ngGlFr8",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-820l9-mnn9qqtsgft092.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1910,7 +1946,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/4qCSKpawZO",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-tmyxphe7emiv5b@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1920,7 +1957,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/10zjlwvXBZ",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-7qvez-lhrp9zfph6r12e@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1930,7 +1968,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/7fWdiLFJx1",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-22100-9eva2ef63yivab@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1940,7 +1979,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/5L8iw9uuNp",
       "img": "https://down-br.img.susercontent.com/file/sg-11134201-8257w-mg7pa4jpabyj54@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1952,7 +1992,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/9pb8IhSVhN",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lyy34vwbez394d.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1968,8 +2009,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4fGDqK6",
       "img": "https://m.media-amazon.com/images/I/51rRxbJnGeL._AC_SX425_.jpg",
-      "old_price": "R$ 89,90",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1986,7 +2027,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4tNe0hy",
       "img": "https://m.media-amazon.com/images/I/61cqHsWOW7L._AC_SX425_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Acessórios",
@@ -1999,7 +2041,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/3VhHhT5CJq",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mibw7gb4ngn5f6@resize_w450_nl.webp",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     }
   ],
   "eletronicos": [
@@ -2019,7 +2062,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/3RfHvLl",
       "img": "https://m.media-amazon.com/images/I/61Pq2UFyMvL._AC_SX522_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2035,7 +2079,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4fozXjg",
       "img": "https://m.media-amazon.com/images/I/51AqAm0zZ2L._AC_SX522_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2050,7 +2095,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4nzjXgA",
       "img": "https://m.media-amazon.com/images/I/610I-HC1gHL._AC_SX679_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2064,8 +2110,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/1TZyWTA",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_778917-MLA91526601104_092025-F.webp",
-      "old_price": "R$ 1.142,00",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2075,7 +2121,8 @@ const products = {
       "store": "Shopee",
       "link": "https://s.shopee.com.br/W3ZdvNsT5",
       "img": "https://down-br.img.susercontent.com/file/br-11134207-820lg-mo5re8lc71moa1@resize_w450_nl.webp",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2089,8 +2136,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/495DiQq",
       "img": "https://m.media-amazon.com/images/I/8128wdx+yRL._AC_SX425_.jpg",
-      "old_price": "R$ 2.599,00",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2100,7 +2147,8 @@ const products = {
       "store": "Mercado Livre",
       "link": "https://meli.la/2aNGssk",
       "img": "https://http2.mlstatic.com/D_NQ_NP_2X_647739-MLA108301139085_032026-F.webp",
-      "hidden": "---FORA---"
+      "hidden": "---FORA---",
+      "promo": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2115,7 +2163,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4390Qkd",
       "img": "https://m.media-amazon.com/images/I/61QFi-3M6uL._AC_SX425_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     },
     {
       "cat": "Eletrônicos",
@@ -2132,7 +2181,8 @@ const products = {
       "store": "Amazon",
       "link": "https://amzn.to/4wFb7C9",
       "img": "https://m.media-amazon.com/images/I/71gyasP+iPL._AC_SX425_.jpg",
-      "hidden": ""
+      "hidden": "",
+      "promo": ""
     }
   ]
 };
@@ -2155,9 +2205,7 @@ function makeCard(p) {
   }
 
   // Preço com riscado se tiver old_price
-  const priceHtml = p.old_price
-    ? `<div class="prod-old-price">${p.old_price}</div><div class="prod-price">${p.price}</div>`
-    : `<div class="prod-price">${p.price}</div>`;
+  const priceHtml = `<div class="prod-price">${p.price}</div>`;
 
   d.innerHTML = `
     <div class="prod-thumb">${thumbContent}</div>
@@ -2166,8 +2214,11 @@ function makeCard(p) {
       <div class="prod-name">${p.name}</div>
       ${specsHtml}
       <div class="prod-footer">
-        <div>${priceHtml}</div>
-        <div class="prod-store">${p.store}</div>
+        <div class="prod-footer-top">
+          <div class="prod-store">${p.store}</div>
+          ${p.promo && p.promo.trim() ? `<div class="prod-promo-badge">Em Promoção</div>` : ''}
+        </div>
+        ${priceHtml}
       </div>
     </div>
     <div class="prod-btn" onclick='openModal(${JSON.stringify(p)})'>Ver produto ↗</div>
@@ -2254,12 +2305,7 @@ function openModal(p) {
   } else {
     descEl.textContent = p.desc || '';
   }
-  const _priceEl = document.getElementById('m-price');
-  if (p.old_price) {
-    _priceEl.innerHTML = `<span class="modal-old-price">${p.old_price}</span><span class="modal-price-current">${p.price}</span>`;
-  } else {
-    _priceEl.textContent = p.price;
-  }
+  document.getElementById('m-price').textContent = p.price;
   document.getElementById('m-store').textContent = p.store;
   document.getElementById('m-link').href = p.link;
   document.getElementById('modal').classList.add('open');
@@ -2715,9 +2761,7 @@ function renderVideos() {
     const prodCards = (v.products || []).map((p, pi) => {
       if (p.hidden && p.hidden.trim() !== '') return '';
       const pj = JSON.stringify(p).replace(/'/g, "&#39;");
-      const priceHtml = p.old_price
-        ? `<div class="prod-old-price">${p.old_price}</div><div class="prod-price" style="font-size:12px;">${p.price}</div>`
-        : `<div class="prod-price" style="font-size:12px;">${p.price}</div>`;
+      const priceHtml = `<div class="prod-price" style="font-size:12px;">${p.price}</div>`;
       return `<div class="prod-card" onclick='openModal(${pj})' style="cursor:pointer;">
           <div class="prod-thumb" style="height:80px;">
             ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">` : ''}
