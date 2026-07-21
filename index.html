@@ -959,6 +959,225 @@
     box-shadow: 0 0 6px rgba(0,255,255,0.18);
   }
 
+
+  /* ── SUB-ABAS DA ABA VÍDEOS ── */
+  .pub-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .pub-tab {
+    padding: 7px 18px;
+    font-size: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .pub-tab:hover { color: var(--text); border-color: var(--border2); }
+  .pub-tab.active {
+    color: #0a0a0a;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .pub-section { display: none; }
+  .pub-section.active { display: block; }
+  .pub-empty {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    border: 1px dashed var(--border2);
+    border-radius: var(--radius);
+  }
+  .pub-empty span {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+
+  /* ── GRID DE PUBLICAÇÕES (cards com thumbnail) ── */
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .pub-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .pub-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+  .pub-card-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .pub-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .pub-card-thumb-placeholder {
+    font-size: 32px;
+    opacity: 0.3;
+  }
+  .pub-card-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.55);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff;
+    pointer-events: none;
+  }
+  .pub-card-info {
+    padding: 10px 12px 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pub-card-num {
+    font-size: 9px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pub-card-title {
+    font-size: 13px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .pub-card-links {
+    display: flex;
+    gap: 5px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  /* modal de publicação */
+  .pub-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.80);
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    backdrop-filter: blur(5px);
+  }
+  .pub-modal-overlay.open { display: flex; }
+  .pub-modal {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.2s ease;
+  }
+  .pub-modal-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pub-modal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .pub-modal-body { padding: 20px; }
+  .pub-modal-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .pub-modal-link-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+  .pub-modal-link-label {
+    font-size: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: var(--muted);
+    flex: 1;
+  }
+  .pub-modal-prods-title {
+    font-size: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .pub-modal-close {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 12px;
+    transition: color 0.2s;
+  }
+  .pub-modal-close:hover { color: var(--text); }
+
+  @media (max-width: 500px) {
+    .pub-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1039,10 +1258,25 @@
 
   <!-- VÍDEOS -->
   <div id="tab-videos" class="section">
-    <div class="section-title">Links e Produtos das Publicações</div>
-    <div id="videos-list"></div>
+    <div class="section-title">Publicações</div>
+    <div class="pub-tabs" id="pub-tabs"></div>
+    <div id="pub-sections"></div>
   </div>
 
+</div>
+
+<!-- MODAL PUBLICAÇÃO -->
+<div class="pub-modal-overlay" id="pub-modal" onclick="closePubModal()">
+  <div class="pub-modal" onclick="event.stopPropagation()">
+    <div class="pub-modal-thumb" id="pm-thumb"></div>
+    <div class="pub-modal-body">
+      <div class="pub-modal-title" id="pm-title"></div>
+      <div class="pub-modal-link-row" id="pm-links"></div>
+      <div class="pub-modal-prods-title" id="pm-prods-label"></div>
+      <div class="video-products-grid" id="pm-prods"></div>
+      <button class="pub-modal-close" onclick="closePubModal()">Fechar</button>
+    </div>
+  </div>
 </div>
 
 <!-- MODAL -->
@@ -2239,442 +2473,663 @@ function clearSearch() {
 
 
 // ── VÍDEOS ──
-const videos = [
+const publicacoes = [
   {
-    "title": "Acessórios Para Setup Baratos 🔥🔥",
-    "link": "https://www.tiktok.com/@techforge_hub/photo/7642715412001508615?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "products": [
+    "id": "slides",
+    "label": "Slides",
+    "items": [
       {
-        "name": "Mangueira Led RGB",
-        "price": "R$ 16,98",
-        "cat": "Acessórios",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp",
-        "specs": [
-          "5m",
-          "IP65"
+        "title": "Acessórios Para Setup Baratos 🔥🔥",
+        "link": "https://www.tiktok.com/@techforge_hub/photo/7642715412001508615?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "products": [
+          {
+            "name": "Mangueira Led RGB",
+            "price": "R$ 16,98",
+            "cat": "Acessórios",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp",
+            "specs": [
+              "5m",
+              "IP65"
+            ],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/Lk7imp0m1"
+          },
+          {
+            "name": "Painel Organizador Mdf",
+            "price": "R$ 39,90",
+            "cat": "Acessórios",
+            "img": "https://down-br.img.susercontent.com/file/br-11134207-820l9-mnn9qqtsgft092.webp",
+            "specs": [
+              "c/ Kit Ganchos e Prateleira"
+            ],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/5L8ngGlFr8"
+          },
+          {
+            "name": "Kit 8 em 1 Limpeza Portátil",
+            "price": "R$ 14,99",
+            "cat": "Acessórios",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rffu-m3bogjn72exz86.webp",
+            "specs": [],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/3g0Zh3ddUF"
+          },
+          {
+            "name": "Fita LED de Sincronia para PC",
+            "price": "R$ 69,99",
+            "cat": "Acessórios",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-8257w-mg7pa4jpabyj54@resize_w450_nl.webp",
+            "specs": [],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/5L8iw9uuNp"
+          },
+          {
+            "name": "Barra de Led RGB Rítmica c/ Sensor de Som",
+            "price": "R$ 27,39",
+            "cat": "Acessórios",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-7qvez-lhrp9zfph6r12e@resize_w450_nl.webp",
+            "specs": [],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/10zjlwvXBZ"
+          }
         ],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/Lk7imp0m1"
+        "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642715412001508615?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "instagram": "https://www.instagram.com/p/DYu6YxTgTaQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "extra": ""
       },
       {
-        "name": "Painel Organizador Mdf",
-        "price": "R$ 39,90",
-        "cat": "Acessórios",
-        "img": "https://down-br.img.susercontent.com/file/br-11134207-820l9-mnn9qqtsgft092.webp",
-        "specs": [
-          "c/ Kit Ganchos e Prateleira"
+        "title": "Teclados Gamer Baratos 2026 🔥🔥🔥",
+        "link": "https://www.tiktok.com/@techforge_hub/photo/7642721833988525319?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "products": [
+          {
+            "name": "Teclado Gamer Semi-Mecânico RGB 65%",
+            "price": "R$ 72,88",
+            "cat": "Periféricos",
+            "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mj8fq5fce41y2d@resize_w450_nl.webp",
+            "specs": [],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/9zuYUsL8h6"
+          },
+          {
+            "name": "New Hero Warlock",
+            "price": "R$ 119,00",
+            "cat": "Periféricos",
+            "img": "https://http2.mlstatic.com/D_NQ_NP_2X_832991-MLB92975138962_092025-F.webp",
+            "specs": [
+              "Switch Blue",
+              "Usb",
+              "Abnt",
+              "Mecânico"
+            ],
+            "store": "Mercado Livre",
+            "link": "https://meli.la/2tYQcBf"
+          },
+          {
+            "name": "Mancer Ghoul MK3",
+            "price": "R$ 134,18",
+            "cat": "Periféricos",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-7renr-m8dmyyovx193fe@resize_w450_nl.webp",
+            "specs": [
+              "RGB",
+              "ABNT2",
+              "Switch Huano Vermelho",
+              "Mecânico"
+            ],
+            "store": "Shopee-Pichau",
+            "link": "https://s.shopee.com.br/4LGGA3XLiS"
+          },
+          {
+            "name": "Attack Shark X87",
+            "price": "R$ 284,99",
+            "cat": "Periféricos",
+            "img": "https://http2.mlstatic.com/D_NQ_NP_2X_702157-MLB89823510629_082025-F.webp",
+            "specs": [
+              "Mecânico",
+              "Sem Fio",
+              "Tri-mode",
+              "Bluetooth",
+              "Switch Blueberry"
+            ],
+            "store": "Mercado Livre",
+            "link": "https://meli.la/1KPtHh5"
+          }
         ],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/5L8ngGlFr8"
+        "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642721833988525319?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "instagram": "https://www.instagram.com/p/DajkXjJjooY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "extra": ""
       },
       {
-        "name": "Kit 8 em 1 Limpeza Portátil",
-        "price": "R$ 14,99",
-        "cat": "Acessórios",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rffu-m3bogjn72exz86.webp",
-        "specs": [],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/3g0Zh3ddUF"
+        "title": "PCs Montados (Entry-High end) 🔥🔥🔥",
+        "link": "https://www.tiktok.com/@techforge_hub/photo/7642723019466624263?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "products": [
+          {
+            "name": "Setup Gamer Completo Ryzen 5 3400g",
+            "price": "R$ 2841,91",
+            "cat": "PCs Montados",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdwm-m0m3cnutcsit23@resize_w450_nl.webp",
+            "specs": [
+              "Ryzen 5 3400g",
+              "16GB DDR4",
+              "SSD 480GB",
+              "Fonte 400W 80 Plus",
+              "Monitor 21\" 75Hz",
+              "Kit Teclado/Mouse/Headset Completo"
+            ],
+            "store": "Shopee-Pichau",
+            "link": "https://s.shopee.com.br/qgNwRx1CN"
+          },
+          {
+            "name": "PC Gamer Forge Ryzen 5 5600GT",
+            "price": "R$ 2657,50",
+            "cat": "PCs Montados",
+            "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf3tom6a@resize_w450_nl.webp",
+            "specs": [
+              "Ryzen 5 5600GT",
+              "16GB DDR4",
+              "SSD 240GB",
+              "Fonte 400W 80 Plus"
+            ],
+            "store": "Shopee-Pichau",
+            "link": "https://s.shopee.com.br/9pbCePIXKe"
+          },
+          {
+            "name": "PC Gamer Spectrum Ryzen 5 5500GT",
+            "price": "R$ 4725,51",
+            "cat": "PCs Montados",
+            "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf9fye74@resize_w450_nl.webp",
+            "specs": [
+              "GeForce RTX 3050 6GB",
+              "16GB DDR4",
+              "SSD 1TB",
+              "Fonte 600W 80 Plus"
+            ],
+            "store": "Shopee-Pichau",
+            "link": "https://s.shopee.com.br/AKXTFoDJXb"
+          },
+          {
+            "name": "PC Gamer Spectrum Ryzen 7 5700X",
+            "price": "R$ 5509,91",
+            "cat": "PCs Montados",
+            "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjpoyjn709ojc5@resize_w450_nl.webp",
+            "specs": [
+              "Water Cooler",
+              "Radeon RX 7600 8GB",
+              "16GB DDR4",
+              "SSD M.2 512GB",
+              "Fonte 600W 80 Plus"
+            ],
+            "store": "Shopee-Pichau",
+            "link": "https://s.shopee.com.br/1LceX9SKwc"
+          }
+        ],
+        "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642723019466624263?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "instagram": "https://www.instagram.com/p/Dajlr30jnFv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "extra": ""
       },
       {
-        "name": "Fita LED de Sincronia para PC",
-        "price": "R$ 69,99",
-        "cat": "Acessórios",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-8257w-mg7pa4jpabyj54@resize_w450_nl.webp",
-        "specs": [],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/5L8iw9uuNp"
+        "title": "Fones/Headsets No Precinho👌🔥🔥",
+        "link": "https://www.tiktok.com/@techforge_hub/photo/7643168490261597447?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "products": [
+          {
+            "name": "QKZ AK6",
+            "price": "R$ 22,66",
+            "cat": "Periféricos",
+            "img": "https://down-br.img.susercontent.com/file/br-11134211-7r98o-m16gydn4rbyme1@resize_w450_nl.webp",
+            "specs": [
+              "Profissional",
+              "c/ Microfone"
+            ],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/BQphlQfzW"
+          },
+          {
+            "name": "KZ EDX Pro",
+            "price": "R$ 42,90",
+            "cat": "Periféricos",
+            "img": "https://down-br.img.susercontent.com/file/br-11134207-820m0-mnoev57vb75s09@resize_w450_nl.webp",
+            "specs": [
+              "Profissional",
+              "c/ Microfone",
+              "Driver Dinâmico Magnético"
+            ],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/5q5CSRXDgo"
+          },
+          {
+            "name": "Mancer Twilight",
+            "price": "R$ 76,42",
+            "cat": "Periféricos",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-8224y-mhg6kdts2t4we3@resize_w450_nl.webp",
+            "specs": [
+              "Raibow",
+              "Drivers 50mm",
+              "Branco"
+            ],
+            "store": "Shopee-Pichau",
+            "link": "https://s.shopee.com.br/AUr4gA7Kjv"
+          },
+          {
+            "name": "Mancer Aura",
+            "price": "R$ 110,84",
+            "cat": "Periféricos",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-82260-mhg61hiy3w937f@resize_w450_nl.webp",
+            "specs": [
+              "Rainbow",
+              "Drivers 50mm",
+              "Branco"
+            ],
+            "store": "Shopee-Pichau",
+            "link": "https://s.shopee.com.br/6L1ViJigBs"
+          },
+          {
+            "name": "Havit H2002d)",
+            "price": "R$ 214,00",
+            "cat": "Periféricos",
+            "img": "https://http2.mlstatic.com/D_NQ_NP_2X_828223-MLA99855607665_112025-F.webp",
+            "specs": [
+              "Conector P2",
+              "20Hz-20kHz",
+              "Cabo 1.7m",
+              "Branco Com Vermelho"
+            ],
+            "store": "Shopee",
+            "link": "https://meli.la/1jaZJH8"
+          }
+        ],
+        "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7643168490261597447?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "instagram": "https://www.instagram.com/p/DajmbR5jgqc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "extra": ""
       },
       {
-        "name": "Barra de Led RGB Rítmica c/ Sensor de Som",
-        "price": "R$ 27,39",
-        "cat": "Acessórios",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-7qvez-lhrp9zfph6r12e@resize_w450_nl.webp",
-        "specs": [],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/10zjlwvXBZ"
+        "title": "Monitores Baratos em 2026 🔥🔥👌",
+        "link": "https://www.tiktok.com/@techforge_hub/photo/7643571051032628487?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "products": [
+          {
+            "name": "Mancer Horizon 23.8\" 100Hz",
+            "price": "R$ 427,50",
+            "cat": "Periféricos",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-81zv9-mik6wyanjpq97d@resize_w450_nl.webp",
+            "specs": [
+              "VA,Full HD",
+              "1ms",
+              "100Hz",
+              "23.8\""
+            ],
+            "store": "Shopee-Pichau",
+            "link": "https://s.shopee.com.br/3qKCRwCFWd"
+          },
+          {
+            "name": "LG UltraGear 24\"",
+            "price": "R$ 660,68",
+            "cat": "Periféricos",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ravp-mayhqkhk3yj4f7@resize_w450_nl.webp",
+            "specs": [
+              "Full HD",
+              "24\"",
+              "IPS",
+              "180Hz",
+              "1ms"
+            ],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/70H3NEsoqU"
+          },
+          {
+            "name": "LG UltraGear 27\"",
+            "price": "R$ 999,90",
+            "cat": "Periféricos",
+            "img": "https://m.media-amazon.com/images/I/61GElLiaorL._AC_SX425_.jpg",
+            "specs": [
+              "IPS",
+              "1ms",
+              "27\"",
+              "Full HD",
+              "180Hz"
+            ],
+            "store": "Amazon",
+            "link": "https://amzn.to/49BZOAC"
+          },
+          {
+            "name": "AOC Agon G4S 25\"",
+            "price": "R$ 1299,98",
+            "cat": "Periféricos",
+            "img": "https://m.media-amazon.com/images/I/71mc98kWRjL._AC_SX425_.jpg",
+            "specs": [
+              "310Hz",
+              "0.3ms",
+              "IPS",
+              "25\"",
+              "Base Ajustável"
+            ],
+            "store": "Amazon",
+            "link": "https://amzn.to/4dqGVTM"
+          }
+        ],
+        "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7643571051032628487?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "instagram": "https://www.instagram.com/p/DajnRBmjo_i/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "extra": ""
+      },
+      {
+        "title": "Celulares Custo-Benefício em 2026??? 🤔",
+        "link": "",
+        "products": [
+          {
+            "name": "Samsung Galaxy A07",
+            "price": "R$ 593",
+            "cat": "Eletrônicos",
+            "img": "https://http2.mlstatic.com/D_NQ_NP_2X_778917-MLA91526601104_092025-F.webp",
+            "specs": [
+              "256gb/8gb",
+              "50mp/8mp Traseira/Frontal",
+              "90Hz"
+            ],
+            "store": "Mercado Livre",
+            "link": "https://meli.la/1TZyWTA"
+          },
+          {
+            "name": "Motorola Moto G56",
+            "price": "R$ 1.398",
+            "cat": "Eletrônicos",
+            "img": "https://m.media-amazon.com/images/I/51AqAm0zZ2L._AC_SX522_.jpg",
+            "specs": [
+              "5G",
+              "256GB/24GB",
+              "120Hz",
+              "6.7\"",
+              "50/32MP Frontal/Traseira"
+            ],
+            "store": "Amazon",
+            "link": "https://amzn.to/4fozXjg"
+          },
+          {
+            "name": "Samsung Galaxy S25 5G",
+            "price": "R$ 3.869",
+            "cat": "Eletrônicos",
+            "img": "https://http2.mlstatic.com/D_NQ_NP_839006-MLA100007826225_122025-OO.jpg",
+            "specs": [
+              "128GB/256GB/512GB",
+              "12GB RAM",
+              "6.2\"",
+              "12Mpx/50Mpx",
+              "120Hz"
+            ],
+            "store": "Mercado Livre",
+            "link": "https://meli.la/2E7R5JT"
+          },
+          {
+            "name": "iPhone 16 128 GB",
+            "price": "R$ 4.898",
+            "cat": "Eletrônicos",
+            "img": "https://http2.mlstatic.com/D_Q_NP_809936-MLA96419773842_102025-B.webp",
+            "specs": [
+              "128GB",
+              "8GB RAM",
+              "6.1\"",
+              "12Mpx/48Mpx",
+              "Chip A18"
+            ],
+            "store": "Mercado Livre",
+            "link": "https://meli.la/1ERoYJZ"
+          },
+          {
+            "name": "Galaxy S26 256GB",
+            "price": "R$ 5.899",
+            "cat": "Eletrônicos",
+            "img": "https://http2.mlstatic.com/D_Q_NP_834702-MLA109041799904_032026-B.webp",
+            "specs": [
+              "12GB",
+              "256GB",
+              "6.3\"",
+              "Traseiras 50Mpx/12Mpx/10Mpx",
+              "Frontal 12Mpx"
+            ],
+            "store": "Mercado Livre",
+            "link": "https://meli.la/1nCwqCY"
+          }
+        ],
+        "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7643648258220231954?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
+        "instagram": "https://www.instagram.com/p/Danl6cqDsx_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "extra": ""
       }
-    ],
-    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642715412001508615?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "instagram": "https://www.instagram.com/p/DYu6YxTgTaQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "extra": ""
+    ]
   },
   {
-    "title": "Teclados Gamer Baratos 2026 🔥🔥🔥",
-    "link": "https://www.tiktok.com/@techforge_hub/photo/7642721833988525319?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "products": [
+    "id": "videos",
+    "label": "Vídeos",
+    "items": [
       {
-        "name": "Teclado Gamer Semi-Mecânico RGB 65%",
-        "price": "R$ 72,88",
-        "cat": "Periféricos",
-        "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mj8fq5fce41y2d@resize_w450_nl.webp",
-        "specs": [],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/9zuYUsL8h6"
+        "title": "Vídeo Exemplo 1 — Como montar um PC Gamer",
+        "tiktok": "https://www.tiktok.com/@techforgehub",
+        "instagram": "https://www.instagram.com/techforgehub/",
+        "extra": "",
+        "products": [
+          {
+            "name": "Gabinete Acegeek Aquarium M345",
+            "price": "R$ 259,98",
+            "cat": "Componentes",
+            "img": "https://http2.mlstatic.com/D_NQ_NP_2X_738250-MLB107019844209_022026-F.webp",
+            "specs": [
+              "Mid-tower",
+              "Lateral de Vidro"
+            ],
+            "store": "Mercado Livre",
+            "link": "https://meli.la/1dGiuWM",
+            "hidden": "",
+            "promo": ""
+          },
+          {
+            "name": "Water Cooler Pichau Aqua 360X",
+            "price": "R$ 284,91",
+            "cat": "Componentes",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdww-mckogua57w3gcd.webp",
+            "specs": [
+              "ARGB",
+              "360mm",
+              "Preto"
+            ],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/8fPFI3Pv10",
+            "hidden": "",
+            "promo": ""
+          }
+        ],
+        "cover": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
       },
       {
-        "name": "New Hero Warlock",
-        "price": "R$ 119,00",
-        "cat": "Periféricos",
-        "img": "https://http2.mlstatic.com/D_NQ_NP_2X_832991-MLB92975138962_092025-F.webp",
-        "specs": [
-          "Switch Blue",
-          "Usb",
-          "Abnt",
-          "Mecânico"
+        "title": "Vídeo Exemplo 2 — Top periféricos baratos",
+        "tiktok": "https://www.tiktok.com/@techforgehub",
+        "instagram": "",
+        "extra": "",
+        "products": [
+          {
+            "name": "Logitech G305",
+            "price": "R$ 169,90",
+            "cat": "Periféricos",
+            "img": "https://m.media-amazon.com/images/I/51sg9BLSMTL._AC_SX425_.jpg",
+            "specs": [
+              "Sem Fio",
+              "LIGHTSPEED",
+              "Até 12.000 DPI"
+            ],
+            "store": "Amazon",
+            "link": "https://amzn.to/494LsZt",
+            "hidden": "",
+            "promo": ""
+          }
         ],
-        "store": "Mercado Livre",
-        "link": "https://meli.la/2tYQcBf"
-      },
-      {
-        "name": "Mancer Ghoul MK3",
-        "price": "R$ 134,18",
-        "cat": "Periféricos",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-7renr-m8dmyyovx193fe@resize_w450_nl.webp",
-        "specs": [
-          "RGB",
-          "ABNT2",
-          "Switch Huano Vermelho",
-          "Mecânico"
-        ],
-        "store": "Shopee-Pichau",
-        "link": "https://s.shopee.com.br/4LGGA3XLiS"
-      },
-      {
-        "name": "Attack Shark X87",
-        "price": "R$ 284,99",
-        "cat": "Periféricos",
-        "img": "https://http2.mlstatic.com/D_NQ_NP_2X_702157-MLB89823510629_082025-F.webp",
-        "specs": [
-          "Mecânico",
-          "Sem Fio",
-          "Tri-mode",
-          "Bluetooth",
-          "Switch Blueberry"
-        ],
-        "store": "Mercado Livre",
-        "link": "https://meli.la/1KPtHh5"
+        "cover": ""
       }
-    ],
-    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642721833988525319?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "instagram": "https://www.instagram.com/p/DajkXjJjooY/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "extra": ""
+    ]
   },
   {
-    "title": "PCs Montados (Entry-High end) 🔥🔥🔥",
-    "link": "https://www.tiktok.com/@techforge_hub/photo/7642723019466624263?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "products": [
+    "id": "posts",
+    "label": "Posts",
+    "items": [
       {
-        "name": "Setup Gamer Completo Ryzen 5 3400g",
-        "price": "R$ 2841,91",
-        "cat": "PCs Montados",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rdwm-m0m3cnutcsit23@resize_w450_nl.webp",
-        "specs": [
-          "Ryzen 5 3400g",
-          "16GB DDR4",
-          "SSD 480GB",
-          "Fonte 400W 80 Plus",
-          "Monitor 21\" 75Hz",
-          "Kit Teclado/Mouse/Headset Completo"
-        ],
-        "store": "Shopee-Pichau",
-        "link": "https://s.shopee.com.br/qgNwRx1CN"
+        "title": "Post Exemplo 1 — Acessórios pra setup",
+        "tiktok": "",
+        "instagram": "https://www.instagram.com/techforgehub/",
+        "extra": "",
+        "products": [
+          {
+            "name": "Mangueira Led RGB",
+            "price": "R$ 16,98",
+            "cat": "Acessórios",
+            "img": "https://down-br.img.susercontent.com/file/sg-11134201-7rbk0-lmkk2fu4b0az29.webp",
+            "specs": [
+              "5M",
+              "IP65"
+            ],
+            "store": "Shopee",
+            "link": "https://s.shopee.com.br/Lk7imp0m1",
+            "hidden": "",
+            "promo": ""
+          },
+          {
+            "name": "Relógio Digital 3d Led",
+            "price": "R$ 31,99",
+            "cat": "Acessórios",
+            "img": "https://http2.mlstatic.com/D_NQ_NP_2X_918222-MLB79491540848_102024-F.webp",
+            "specs": [],
+            "store": "Mercado Livre",
+            "link": "https://meli.la/14SmRNU",
+            "hidden": "",
+            "promo": ""
+          }
+        ]
       },
       {
-        "name": "PC Gamer Forge Ryzen 5 5600GT",
-        "price": "R$ 2657,50",
-        "cat": "PCs Montados",
-        "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf3tom6a@resize_w450_nl.webp",
-        "specs": [
-          "Ryzen 5 5600GT",
-          "16GB DDR4",
-          "SSD 240GB",
-          "Fonte 400W 80 Plus"
-        ],
-        "store": "Shopee-Pichau",
-        "link": "https://s.shopee.com.br/9pbCePIXKe"
-      },
-      {
-        "name": "PC Gamer Spectrum Ryzen 5 5500GT",
-        "price": "R$ 4725,51",
-        "cat": "PCs Montados",
-        "img": "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhw7b4vf9fye74@resize_w450_nl.webp",
-        "specs": [
-          "GeForce RTX 3050 6GB",
-          "16GB DDR4",
-          "SSD 1TB",
-          "Fonte 600W 80 Plus"
-        ],
-        "store": "Shopee-Pichau",
-        "link": "https://s.shopee.com.br/AKXTFoDJXb"
-      },
-      {
-        "name": "PC Gamer Spectrum Ryzen 7 5700X",
-        "price": "R$ 5509,91",
-        "cat": "PCs Montados",
-        "img": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mjpoyjn709ojc5@resize_w450_nl.webp",
-        "specs": [
-          "Water Cooler",
-          "Radeon RX 7600 8GB",
-          "16GB DDR4",
-          "SSD M.2 512GB",
-          "Fonte 600W 80 Plus"
-        ],
-        "store": "Shopee-Pichau",
-        "link": "https://s.shopee.com.br/1LceX9SKwc"
+        "title": "Post Exemplo 2 — Sem produtos ainda",
+        "tiktok": "",
+        "instagram": "https://www.instagram.com/techforgehub/",
+        "extra": "https://linktr.ee/techforgehub",
+        "products": []
       }
-    ],
-    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7642723019466624263?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "instagram": "https://www.instagram.com/p/Dajlr30jnFv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "extra": ""
-  },
-  {
-    "title": "Fones/Headsets No Precinho👌🔥🔥",
-    "link": "https://www.tiktok.com/@techforge_hub/photo/7643168490261597447?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "products": [
-      {
-        "name": "QKZ AK6",
-        "price": "R$ 22,66",
-        "cat": "Periféricos",
-        "img": "https://down-br.img.susercontent.com/file/br-11134211-7r98o-m16gydn4rbyme1@resize_w450_nl.webp",
-        "specs": [
-          "Profissional",
-          "c/ Microfone"
-        ],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/BQphlQfzW"
-      },
-      {
-        "name": "KZ EDX Pro",
-        "price": "R$ 42,90",
-        "cat": "Periféricos",
-        "img": "https://down-br.img.susercontent.com/file/br-11134207-820m0-mnoev57vb75s09@resize_w450_nl.webp",
-        "specs": [
-          "Profissional",
-          "c/ Microfone",
-          "Driver Dinâmico Magnético"
-        ],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/5q5CSRXDgo"
-      },
-      {
-        "name": "Mancer Twilight",
-        "price": "R$ 76,42",
-        "cat": "Periféricos",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-8224y-mhg6kdts2t4we3@resize_w450_nl.webp",
-        "specs": [
-          "Raibow",
-          "Drivers 50mm",
-          "Branco"
-        ],
-        "store": "Shopee-Pichau",
-        "link": "https://s.shopee.com.br/AUr4gA7Kjv"
-      },
-      {
-        "name": "Mancer Aura",
-        "price": "R$ 110,84",
-        "cat": "Periféricos",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-82260-mhg61hiy3w937f@resize_w450_nl.webp",
-        "specs": [
-          "Rainbow",
-          "Drivers 50mm",
-          "Branco"
-        ],
-        "store": "Shopee-Pichau",
-        "link": "https://s.shopee.com.br/6L1ViJigBs"
-      },
-      {
-        "name": "Havit H2002d)",
-        "price": "R$ 214,00",
-        "cat": "Periféricos",
-        "img": "https://http2.mlstatic.com/D_NQ_NP_2X_828223-MLA99855607665_112025-F.webp",
-        "specs": [
-          "Conector P2",
-          "20Hz-20kHz",
-          "Cabo 1.7m",
-          "Branco Com Vermelho"
-        ],
-        "store": "Shopee",
-        "link": "https://meli.la/1jaZJH8"
-      }
-    ],
-    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7643168490261597447?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "instagram": "https://www.instagram.com/p/DajmbR5jgqc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "extra": ""
-  },
-  {
-    "title": "Monitores Baratos em 2026 🔥🔥👌",
-    "link": "https://www.tiktok.com/@techforge_hub/photo/7643571051032628487?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "products": [
-      {
-        "name": "Mancer Horizon 23.8\" 100Hz",
-        "price": "R$ 427,50",
-        "cat": "Periféricos",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-81zv9-mik6wyanjpq97d@resize_w450_nl.webp",
-        "specs": [
-          "VA,Full HD",
-          "1ms",
-          "100Hz",
-          "23.8\""
-        ],
-        "store": "Shopee-Pichau",
-        "link": "https://s.shopee.com.br/3qKCRwCFWd"
-      },
-      {
-        "name": "LG UltraGear 24\"",
-        "price": "R$ 660,68",
-        "cat": "Periféricos",
-        "img": "https://down-br.img.susercontent.com/file/sg-11134201-7ravp-mayhqkhk3yj4f7@resize_w450_nl.webp",
-        "specs": [
-          "Full HD",
-          "24\"",
-          "IPS",
-          "180Hz",
-          "1ms"
-        ],
-        "store": "Shopee",
-        "link": "https://s.shopee.com.br/70H3NEsoqU"
-      },
-      {
-        "name": "LG UltraGear 27\"",
-        "price": "R$ 999,90",
-        "cat": "Periféricos",
-        "img": "https://m.media-amazon.com/images/I/61GElLiaorL._AC_SX425_.jpg",
-        "specs": [
-          "IPS",
-          "1ms",
-          "27\"",
-          "Full HD",
-          "180Hz"
-        ],
-        "store": "Amazon",
-        "link": "https://amzn.to/49BZOAC"
-      },
-      {
-        "name": "AOC Agon G4S 25\"",
-        "price": "R$ 1299,98",
-        "cat": "Periféricos",
-        "img": "https://m.media-amazon.com/images/I/71mc98kWRjL._AC_SX425_.jpg",
-        "specs": [
-          "310Hz",
-          "0.3ms",
-          "IPS",
-          "25\"",
-          "Base Ajustável"
-        ],
-        "store": "Amazon",
-        "link": "https://amzn.to/4dqGVTM"
-      }
-    ],
-    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7643571051032628487?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "instagram": "https://www.instagram.com/p/DajnRBmjo_i/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "extra": ""
-  },
-  {
-    "title": "Celulares Custo-Benefício em 2026??? 🤔",
-    "link": "",
-    "products": [
-      {
-        "name": "Samsung Galaxy A07",
-        "price": "R$ 593",
-        "cat": "Eletrônicos",
-        "img": "https://http2.mlstatic.com/D_NQ_NP_2X_778917-MLA91526601104_092025-F.webp",
-        "specs": ["256gb/8gb","50mp/8mp Traseira/Frontal","90Hz"],
-        "store": "Mercado Livre",
-        "link": "https://meli.la/1TZyWTA"
-      },
-      {
-        "name": "Motorola Moto G56",
-        "price": "R$ 1.398",
-        "cat": "Eletrônicos",
-        "img": "https://m.media-amazon.com/images/I/51AqAm0zZ2L._AC_SX522_.jpg",
-        "specs": ["5G","256GB/24GB","120Hz","6.7\"","50/32MP Frontal/Traseira"],
-        "store": "Amazon",
-        "link": "https://amzn.to/4fozXjg"
-      },
-      {
-        "name": "Samsung Galaxy S25 5G",
-        "price": "R$ 3.869",
-        "cat": "Eletrônicos",
-        "img": "https://http2.mlstatic.com/D_NQ_NP_839006-MLA100007826225_122025-OO.jpg",
-        "specs": ["128GB/256GB/512GB","12GB RAM", "6.2\"","12Mpx/50Mpx","120Hz"],
-        "store": "Mercado Livre",
-        "link": "https://meli.la/2E7R5JT"
-      },
-      {
-        "name": "iPhone 16 128 GB",
-        "price": "R$ 4.898",
-        "cat": "Eletrônicos",
-        "img": "https://http2.mlstatic.com/D_Q_NP_809936-MLA96419773842_102025-B.webp",
-        "specs": ["128GB","8GB RAM","6.1\"","12Mpx/48Mpx","Chip A18"],
-        "store": "Mercado Livre",
-        "link": "https://meli.la/1ERoYJZ"
-      },
-      {
-        "name": "Galaxy S26 256GB",
-        "price": "R$ 5.899",
-        "cat": "Eletrônicos",
-        "img": "https://http2.mlstatic.com/D_Q_NP_834702-MLA109041799904_032026-B.webp",
-        "specs": ["12GB","256GB","6.3\"","Traseiras 50Mpx/12Mpx/10Mpx","Frontal 12Mpx"],
-        "store": "Mercado Livre",
-        "link": "https://meli.la/1nCwqCY"
-      }
-    ],
-    "tiktok": "https://www.tiktok.com/@techforge_hub/photo/7643648258220231954?is_from_webapp=1&sender_device=pc&web_id=7639901784929355272",
-    "instagram": "https://www.instagram.com/p/Danl6cqDsx_/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "extra": ""
+    ]
   }
 ];
 
-function renderVideos() {
-  const list = document.getElementById('videos-list');
-  if (!list) return;
-  list.innerHTML = '';
-  videos.forEach((v, i) => {
-    const id = 'vid-' + i;
-    const row = document.createElement('div');
-    row.className = 'video-row';
+function renderPublicacoes() {
+  const tabsEl     = document.getElementById('pub-tabs');
+  const sectionsEl = document.getElementById('pub-sections');
+  if (!tabsEl || !sectionsEl) return;
+  tabsEl.innerHTML = '';
+  sectionsEl.innerHTML = '';
 
-    const prodCards = (v.products || []).map((p, pi) => {
-      if (p.hidden && p.hidden.trim() !== '') return '';
-      const pj = JSON.stringify(p).replace(/'/g, "&#39;");
-      const priceHtml = `<div class="prod-price" style="font-size:12px;">${p.price}</div>`;
-      return `<div class="prod-card" onclick='openModal(${pj})' style="cursor:pointer;">
-          <div class="prod-thumb" style="height:80px;">
-            ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">` : ''}
+  publicacoes.forEach((grupo, gi) => {
+    // ── Tab button ──
+    const btn = document.createElement('button');
+    btn.className = 'pub-tab' + (gi === 0 ? ' active' : '');
+    btn.textContent = grupo.label;
+    btn.onclick = () => {
+      document.querySelectorAll('.pub-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pub-section').forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('pub-sec-' + grupo.id).classList.add('active');
+    };
+    tabsEl.appendChild(btn);
+
+    // ── Seção ──
+    const sec = document.createElement('div');
+    sec.className = 'pub-section' + (gi === 0 ? ' active' : '');
+    sec.id = 'pub-sec-' + grupo.id;
+
+    if (!grupo.items || grupo.items.length === 0) {
+      sec.innerHTML = '<div class="pub-empty"><span>📅</span>Em breve por aqui!</div>';
+    } else {
+      const grid = document.createElement('div');
+      grid.className = 'pub-grid';
+
+      grupo.items.forEach((v, i) => {
+        // Thumbnail: primeira imagem dos produtos ou campo cover
+        const thumbSrc = v.cover || (v.products && v.products[0] && v.products[0].img) || '';
+        const hasThumb = !!thumbSrc;
+
+        // Ícone do tipo de publicação
+        const hasVideo = !!(v.tiktok || v.extra);
+
+        const card = document.createElement('div');
+        card.className = 'pub-card';
+        card.onclick = () => openPubModal(v, i);
+
+        const linkBtns = [
+          v.tiktok    ? `<span class="video-link-btn video-link-tiktok"   style="font-size:9px;padding:2px 7px;">TikTok</span>`    : '',
+          v.instagram ? `<span class="video-link-btn video-link-insta"    style="font-size:9px;padding:2px 7px;">Instagram</span>` : '',
+          v.extra     ? `<span class="video-link-btn video-link-extra"    style="font-size:9px;padding:2px 7px;">Ver</span>`       : '',
+        ].join('');
+
+        card.innerHTML = `
+          <div class="pub-card-thumb">
+            ${hasThumb
+              ? `<img src="${thumbSrc}" alt="${v.title}" onerror="this.style.display='none'">`
+              : `<div class="pub-card-thumb-placeholder">🎬</div>`}
+            ${hasVideo ? `<div class="pub-card-play">▶</div>` : ''}
           </div>
-          <div class="prod-info" style="padding:8px 10px;gap:2px;">
-            <div class="prod-cat" style="font-size:9px;">Produto ${pi + 1}</div>
-            <div class="prod-name" style="font-size:11px;line-height:1.3;">${p.name}</div>
-            <div style="margin-top:4px;">${priceHtml}</div>
-          </div>
-        </div>`;
-    }).join('');
-
-    // Botões de link — só aparecem se o campo tiver URL preenchida
-    const linkTiktok   = v.tiktok    ? `<a href="${v.tiktok}"    class="video-link-btn video-link-tiktok"    target="_blank" rel="noopener">TikTok ↗</a>`    : '';
-    const linkInsta    = v.instagram ? `<a href="${v.instagram}" class="video-link-btn video-link-insta"     target="_blank" rel="noopener">Instagram ↗</a>` : '';
-    const linkExtra    = v.extra     ? `<a href="${v.extra}"     class="video-link-btn video-link-extra"     target="_blank" rel="noopener">Ver ↗</a>`        : '';
-    const hasLinks = linkTiktok || linkInsta || linkExtra;
-
-    row.innerHTML = `
-      <div class="video-header" onclick="toggleVideo('${id}')">
-        <div class="video-header-left">
-          <div class="video-num">${i + 1}</div>
-          <div class="video-title-text">${v.title}</div>
-        </div>
-        <div class="video-toggle" id="vtog-${id}">▼</div>
-      </div>
-      <div class="video-body" id="${id}">
-        ${hasLinks ? `<div class="video-link-row">
-          <div class="video-link-icon">▶</div>
-          <div class="video-link-label">Assistir no:</div>
-          <div class="video-link-btns">${linkTiktok}${linkInsta}${linkExtra}</div>
-        </div>` : ''}
-        ${prodCards ? `<div class="video-products-grid">${prodCards}</div>` : '<div style="padding:16px 20px 18px;font-size:12px;color:var(--muted);">Nenhum produto cadastrado ainda.</div>'}
-      </div>`;
-    list.appendChild(row);
+          <div class="pub-card-info">
+            <div class="pub-card-num">${grupo.label} ${i + 1}</div>
+            <div class="pub-card-title">${v.title}</div>
+            ${linkBtns ? `<div class="pub-card-links">${linkBtns}</div>` : ''}
+          </div>`;
+        grid.appendChild(card);
+      });
+      sec.appendChild(grid);
+    }
+    sectionsEl.appendChild(sec);
   });
+}
+
+function openPubModal(v, i) {
+  // Thumb
+  const thumbEl = document.getElementById('pm-thumb');
+  const thumbSrc = v.cover || (v.products && v.products[0] && v.products[0].img) || '';
+  thumbEl.innerHTML = thumbSrc
+    ? `<img src="${thumbSrc}" alt="${v.title}" style="width:100%;height:100%;object-fit:cover;">`
+    : '<div style="font-size:40px;opacity:0.2;">🎬</div>';
+
+  // Título
+  document.getElementById('pm-title').textContent = v.title;
+
+  // Links
+  const linksEl = document.getElementById('pm-links');
+  const btns = [
+    v.tiktok    ? `<a href="${v.tiktok}"    class="video-link-btn video-link-tiktok"  target="_blank" rel="noopener">TikTok ↗</a>`    : '',
+    v.instagram ? `<a href="${v.instagram}" class="video-link-btn video-link-insta"   target="_blank" rel="noopener">Instagram ↗</a>` : '',
+    v.extra     ? `<a href="${v.extra}"     class="video-link-btn video-link-extra"   target="_blank" rel="noopener">Ver ↗</a>`        : '',
+  ].join('');
+  linksEl.style.display = btns ? 'flex' : 'none';
+  linksEl.innerHTML = btns
+    ? `<div class="pub-modal-link-label">Assistir no:</div><div class="video-link-btns">${btns}</div>`
+    : '';
+
+  // Produtos
+  const prodsEl = document.getElementById('pm-prods');
+  const labelEl = document.getElementById('pm-prods-label');
+  const prods = (v.products || []).filter(p => !(p.hidden && p.hidden.trim()));
+  if (prods.length) {
+    labelEl.textContent = 'Produtos do vídeo';
+    labelEl.style.display = 'block';
+    prodsEl.innerHTML = prods.map((p, pi) => {
+      const pj = JSON.stringify(p).replace(/'/g, "&#39;");
+      return `<div class="prod-card" onclick='closePubModal();openModal(${pj})' style="cursor:pointer;">
+        <div class="prod-thumb" style="height:80px;">
+          ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">` : ''}
+        </div>
+        <div class="prod-info" style="padding:8px 10px;gap:2px;">
+          <div class="prod-cat" style="font-size:9px;">Produto ${pi + 1}</div>
+          <div class="prod-name" style="font-size:11px;line-height:1.3;">${p.name}</div>
+          <div class="prod-price" style="font-size:12px;margin-top:4px;">${p.price}</div>
+        </div>
+      </div>`;
+    }).join('');
+  } else {
+    labelEl.style.display = 'none';
+    prodsEl.innerHTML = '<div style="font-size:12px;color:var(--muted);padding:4px 0;">Em breve!</div>';
+  }
+
+  document.getElementById('pub-modal').classList.add('open');
+}
+
+function closePubModal() {
+  document.getElementById('pub-modal').classList.remove('open');
 }
 
 function toggleVideo(id) {
@@ -2684,7 +3139,7 @@ function toggleVideo(id) {
   tog.textContent = open ? '▲' : '▼';
 }
 
-renderVideos();
+renderPublicacoes();
 </script>
 </body>
 </html>
